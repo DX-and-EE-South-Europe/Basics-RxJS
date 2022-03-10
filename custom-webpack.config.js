@@ -9,7 +9,8 @@ module.exports = {
     }),
     new ESLintPlugin({
       extensions: ['ts', 'tsx'],
-      emitWarning: true,
+      emitWarning: false,
+      emitError: false,
       failOnError: false,
       failOnWarning: false,
       lintDirtyModulesOnly: true,
