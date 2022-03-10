@@ -8,3 +8,6 @@ custom-webpack.config.js
 .husky
 .lintstagedrc
 commitlint.config.js
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
