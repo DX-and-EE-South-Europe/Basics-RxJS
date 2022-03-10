@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataLink } from './common/interfaces';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rxjs-app';
+  headerLink: DataLink = { name: 'RxJS', router: 'home', theme: 'link-header' };
 }

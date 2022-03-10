@@ -1,0 +1,66 @@
+@use '/src/styles/var.scss' as v;
+
+* {
+  box-sizing: border-box;
+  font-family: 'Fredoka';
+}
+
+body {
+  background-color: white;
+  height: 100vh;
+  overflow-y: hidden;
+  text-align: justify;
+  text-justify: inter-word;
+  width: 100vw;
+  * {
+    font-size: 18px;
+  }
+  app-root {
+    display: grid;
+    grid-template-areas:
+      'header'
+      'router'
+      'page'
+      '.';
+    grid-template-columns: auto;
+    grid-template-rows: 3rem 0 1fr 0;
+
+    height: 100%;
+
+    .home-header {
+      grid-area: header;
+    }
+    .page {
+      grid-area: page;
+      height: calc(100vh - 3rem);
+    }
+    router-outlet {
+      grid-area: router;
+    }
+  }
+  h1 {
+    font-size: 3rem;
+    margin: v.$margin-general 0;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: v.$margin-general 0;
+  }
+}
+
+.page {
+  align-self: stretch;
+  display: grid;
+  grid-column-start: 1;
+  grid-row-start: router;
+  grid-template-columns: [nav] 14rem [main] 1fr;
+  height: 100%;
+  width: 100%;
+}

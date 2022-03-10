@@ -1,0 +1,24 @@
+@use '/src/styles/var.scss' as v;
+@use 'sass:map';
+
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.link {
+  align-items: center;
+  color: rgba($color: v.$color-text-light, $alpha: 1);
+  display: block;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+  &.link-header {
+    width: fit-content;
+  }
+  &[hover]:hover {
+    color: rgba($color: v.$color-text-light, $alpha: 0.5);
+  }
+}
