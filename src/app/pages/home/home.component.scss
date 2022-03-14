@@ -13,8 +13,7 @@ main {
     justify-content: center;
     width: 100%;
     .section-box {
-      background-color: v.$color-bg-light;
-      border: 0.1rem solid v.$color-text-dark;
+      background-color: v.$color-bg-mid;
       border-radius: 0.5rem;
       display: flex;
       flex-basis: 20%;
@@ -24,7 +23,7 @@ main {
       width: fit-content;
       z-index: 2;
       &:hover {
-        background-color: v.$color-bg-mid;
+        background-color: v.$color-bg-light;
       }
     }
   }

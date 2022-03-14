@@ -40,7 +40,6 @@ body {
   }
   h1 {
     font-size: 3rem;
-    margin: v.$margin-general 0;
   }
   h2 {
     font-size: 2.5rem;
@@ -51,7 +50,7 @@ body {
   h4,
   h5,
   h6 {
-    margin: v.$margin-general 0;
+    padding: v.$padding-general 0;
   }
 }
 
@@ -60,7 +59,7 @@ body {
   display: grid;
   grid-column-start: 1;
   grid-row-start: router;
-  grid-template-columns: [nav] 14rem [main] 1fr;
+  grid-template-columns: [nav] 13rem [main] 1fr;
   height: 100%;
   width: 100%;
 }

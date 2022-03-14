@@ -18,6 +18,11 @@
   &.link-header {
     width: fit-content;
   }
+  &.link-nav {
+    font-size: 1rem;
+    justify-content: flex-start;
+    padding: 0 0 0 2.5rem;
+  }
   &[hover]:hover {
     color: rgba($color: v.$color-text-light, $alpha: 0.5);
   }

@@ -1,10 +1,5 @@
 <div class="page">
-  <nav>
-    <h1>Operators</h1>
-    <div *ngFor="let section of creationOperators" class="section-box">
-      <app-link [dataLink]="section"></app-link>
-    </div>
-  </nav>
+  <app-dynamic-nav [navLabels]="navPage"></app-dynamic-nav>
   <main>
     <p>operators</p>
     <p>

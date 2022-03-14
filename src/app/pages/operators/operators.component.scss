@@ -1,18 +1,8 @@
 @use '/src/styles/var.scss' as v;
 
 .page {
-  nav {
-    background-color: v.$color-bg-mid;
-    color: v.$color-text-light;
+  app-dynamic-nav {
     grid-column-start: nav;
-    height: 100%;
-    * {
-      padding: 0 0 0 v.$padding-general;
-    }
-    h1 {
-      font-size: 1.3rem;
-      font-weight: 500;
-    }
   }
 
   main {

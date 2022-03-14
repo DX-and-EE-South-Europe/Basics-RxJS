@@ -1,7 +1,7 @@
 <a
-  class="link {{ dataLink.theme }}"
+  class="link {{ dataLink.theme }} {{ addClass }}"
   #el
   [attr.hover]="hover ? true : null"
-  [routerLink]="[dataLink.router]"
+  [routerLink]="[route]"
   >{{ dataLink.name }}</a
 >

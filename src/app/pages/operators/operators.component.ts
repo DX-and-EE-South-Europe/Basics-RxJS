@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DataLink } from 'src/app/common/interfaces';
-import { createDataLinkArray } from 'src/app/common/utils';
+import { navOperator } from 'src/app/common/const/nav-operator';
+import { BaseNav, ComplexNav } from 'src/app/common/interfaces';
 
 @Component({
   selector: 'app-operators',
@@ -8,15 +8,5 @@ import { createDataLinkArray } from 'src/app/common/utils';
   styleUrls: ['./operators.component.scss']
 })
 export class OperatorsComponent {
-  creationOperatorsName = ['of', 'from', 'fromEvent'];
-  creationOperators!: DataLink[];
-  pipeableOperators = ['General', 'High-Order Observables', 'Error Handling'];
-  generalOperators!: DataLink[];
-
-  constructor() {
-    this.creationOperators = createDataLinkArray(
-      this.creationOperatorsName,
-      true
-    );
-  }
+  navPage: BaseNav | ComplexNav = navOperator;
 }

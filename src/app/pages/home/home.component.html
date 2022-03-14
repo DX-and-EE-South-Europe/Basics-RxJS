@@ -2,8 +2,10 @@
   <h1>RXJS APP</h1>
   <h2>Basics & Most useful operators</h2>
   <div class="list-sections">
-    <div *ngFor="let section of listSections" class="section-box">
-      <app-link [dataLink]="section"></app-link>
+    <div *ngFor="let section of listSectionsNames" class="section-box">
+      <app-link
+        [dataLink]="{ name: section, isRelativeRoute: false }"
+      ></app-link>
     </div>
   </div>
 </main>
