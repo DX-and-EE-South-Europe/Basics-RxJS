@@ -7,6 +7,7 @@
 
 body {
   background-color: white;
+  font-family: 'Fredoka';
   height: 100vh;
   overflow-y: hidden;
   text-align: justify;
@@ -62,4 +63,22 @@ body {
   grid-template-columns: [nav] 13rem [main] 1fr;
   height: 100%;
   width: 100%;
+}
+
+button {
+  background-color: v.$color-bg-light;
+  border: 0;
+  border-radius: 0.5rem;
+  color: v.$color-text-light;
+  height: 100%;
+  margin: 0 0.2rem;
+  padding: 0 v.$padding-elements;
+  width: fit-content;
+  &:disabled {
+    background-color: v.$color-bg-Ultralight;
+  }
+  &:not(:disabled):hover {
+    background-color: v.$color-bg-mid;
+    cursor: pointer;
+  }
 }

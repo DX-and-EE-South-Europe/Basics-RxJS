@@ -9,14 +9,32 @@
     grid-column-start: main;
     overflow-y: auto;
     padding: v.$padding-elements;
-    * {
-      margin: v.$margin-elements 0;
+
+    h1 {
+      font-size: 2rem;
     }
-    p:first-child {
-      font-size: 3rem;
-    }
-    p {
-      font-size: 1.3rem;
+
+    section {
+      align-items: flex-start;
+      display: flex;
+      margin: v.$margin-general 0;
+
+      &.section-concept {
+        .concept-definition {
+          font-size: 1.1rem;
+          margin-right: v.$margin-elements;
+        }
+
+        img {
+          background-color: v.$color-bg-Ultralight;
+          height: 7rem;
+          width: 70rem;
+        }
+      }
+
+      &.section-demo {
+        height: 20rem;
+      }
     }
   }
 }

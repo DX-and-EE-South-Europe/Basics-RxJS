@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export interface DataLink {
   name: string;
   isRelativeRoute: boolean;
@@ -20,4 +22,10 @@ export interface SubComplexNav {
   name: string;
   isSimple: boolean;
   labels: BaseNav[] | string[];
+}
+
+export interface VisualDemo {
+  codeToExecute$: Observable<unknown>;
+  codeString: string;
+  wait?: boolean;
 }

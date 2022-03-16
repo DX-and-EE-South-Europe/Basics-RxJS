@@ -1,0 +1,51 @@
+@use '/src/styles/var.scss' as v;
+
+$color-stop: #e4d1d6;
+
+:host {
+  display: grid;
+  grid-template-areas:
+    'demo-title . .'
+    'demo-code . demo-console'
+    'demo-code . button-restart';
+  grid-template-columns: 1fr v.$margin-elements 1fr;
+  grid-template-rows: 2rem 1fr 2rem;
+  height: 100%;
+  width: 100%;
+}
+.demo-title {
+  font-size: 1.2rem;
+  grid-area: demo-title;
+  grid-row: 1;
+}
+.demo {
+  border: 0.3rem solid v.$color-bg-light;
+  overflow-y: auto;
+  padding: v.$padding-general;
+  &.demo-code {
+    grid-area: demo-code;
+  }
+  &.demo-console {
+    grid-area: demo-console;
+    margin-bottom: v.$margin-general;
+  }
+  &[wait] {
+    align-items: center;
+    background-color: rgba($color: $color-stop, $alpha: 0.7);
+    display: flex;
+    font-size: 1.3rem;
+    justify-content: center;
+    &:hover {
+      background-color: rgba($color: $color-stop, $alpha: 1);
+      cursor: pointer;
+    }
+  }
+  pre,
+  code {
+    font-family: 'monospace';
+    line-height: 1.3rem;
+  }
+}
+.buttons {
+  grid-area: button-restart;
+}
