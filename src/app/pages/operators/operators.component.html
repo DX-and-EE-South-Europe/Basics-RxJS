@@ -1,18 +1,6 @@
 <div class="page">
   <app-dynamic-nav [navLabels]="navPage"></app-dynamic-nav>
   <main>
-    <h1>Operators</h1>
-    <section class="section-concept">
-      <p class="concept-definition">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales
-        leo in elit luctus, sed tempus libero venenatis. Pellentesque nulla
-        sapien, mollis quis sollicitudin a, sollicitudin a leo. Mauris odio
-        libero, condimentum eget libero at, ultricies sagittis ante.
-      </p>
-      <img class="concept-img" />
-    </section>
-    <section class="section-demo">
-      <app-visual-demo [code]="codeDemo"></app-visual-demo>
-    </section>
+    <router-outlet></router-outlet>
   </main>
 </div>

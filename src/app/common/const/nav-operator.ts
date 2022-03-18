@@ -6,19 +6,23 @@ export const navOperator: ComplexNav = {
   labels: [
     {
       name: 'Creation',
-      labels: ['of', 'from', 'fromEvent'],
+      labels: ['of' /* , 'from', 'fromEvent' */],
       isSimple: true
     },
     {
       name: 'Pipeable',
       isSimple: false,
       labels: [
-        { name: 'General', isSimple: true, labels: ['map', 'filter', 'tap'] },
         {
+          name: 'General',
+          isSimple: true,
+          labels: ['map', 'filter' /* , 'tap' */]
+        }
+        /*  {
           name: 'Distinct',
           isSimple: true,
           labels: ['distinct', 'distinctUntilChanged']
-        }
+        } */
       ]
     }
   ]

@@ -8,6 +8,8 @@ import { OperatorsComponent } from './pages/operators/operators.component';
 import { LinkComponent } from './components/link/link.component';
 import { DynamicNavComponent } from './components/dynamic-nav/dynamic-nav.component';
 import { VisualDemoComponent } from './components/visual-demo/visual-demo.component';
+import { HomeOperatorsComponent } from './pages/operators/home-operators/home-operators.component';
+import { GeneratorContentComponent } from './pages/operators/generator-content/generator-content.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { VisualDemoComponent } from './components/visual-demo/visual-demo.compon
     OperatorsComponent,
     LinkComponent,
     DynamicNavComponent,
-    VisualDemoComponent
+    VisualDemoComponent,
+    HomeOperatorsComponent,
+    GeneratorContentComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

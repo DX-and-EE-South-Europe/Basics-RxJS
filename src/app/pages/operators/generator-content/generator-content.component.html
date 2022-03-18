@@ -1,0 +1,12 @@
+<ng-container *ngIf="dataPage">
+  <h1>{{ dataPage.name }}</h1>
+  <section class="section-concept">
+    <p class="concept-definition">
+      {{ dataPage.description }}
+    </p>
+    <img class="concept-img" />
+  </section>
+  <section class="section-demo">
+    <app-visual-demo [code]="dataPage.demo"></app-visual-demo>
+  </section>
+</ng-container>

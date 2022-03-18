@@ -37,11 +37,14 @@ nav {
 .nav-label {
   border-top: 0.5px dotted v.$color-bg-Ultralight;
   height: calc(2 * v.$padding-general + 1rem);
+  &.selected-true {
+    background-color: v.$color-bg-dark;
+  }
   &:last-child {
     border-bottom: 1px dotted v.$color-bg-Ultralight;
     margin-bottom: 1rem;
   }
-  &:hover {
+  &.selected-false:hover {
     background-color: rgba($color: v.$color-bg-light, $alpha: 1);
   }
 }

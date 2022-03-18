@@ -29,3 +29,10 @@ export interface VisualDemo {
   codeString: string;
   wait?: boolean;
 }
+
+export interface DataPage {
+  name: string;
+  description: string;
+  ImgUrl: string;
+  demo: VisualDemo;
+}

@@ -3,10 +3,12 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
   OnDestroy,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
-import { concat, fromEvent, Observer, of, Subscription } from 'rxjs';
+import { concat, fromEvent, Observable, Observer, of, Subscription } from 'rxjs';
 import { first, map, tap } from 'rxjs/operators';
 import { VisualDemo } from 'src/app/common/interfaces';
 
@@ -15,9 +17,10 @@ import { VisualDemo } from 'src/app/common/interfaces';
   templateUrl: './visual-demo.component.html',
   styleUrls: ['./visual-demo.component.scss']
 })
-export class VisualDemoComponent implements AfterViewInit, OnDestroy {
+export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnChanges {
   codeDemoConsole = '';
   runFinish = false;
+  firstClickDemo$!: Observable<PointerEvent | null>;
   initialSubscription!: Subscription;
   restartSubscription!: Subscription;
 
@@ -35,8 +38,7 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy {
   @ViewChild('demoConsole') demoConsoleElement!: ElementRef;
 
   observer: Observer<unknown> = {
-    next: (value) =>
-      value !== null ? this.concatDemoConsole(String(value)) : null,
+    next: (value) => (value !== null ? this.concatDemoConsole(String(value)) : null),
     error: (error) => this.concatDemoConsole(`Error: ${error}`),
     complete: () => {
       this.runFinish = true;
@@ -45,30 +47,37 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy {
   };
 
   ngAfterViewInit(): void {
-    const firstClick$ = fromEvent(
-      this.demoConsoleElement.nativeElement,
-      'click'
-    ).pipe(
+    this.firstClickDemo$ = fromEvent(this.demoConsoleElement.nativeElement, 'click').pipe(
       first(),
       tap(() => (this.code.wait = false)),
       map(() => null)
     );
-    this.initialSubscription = concat(
-      firstClick$,
-      this.code.codeToExecute$
-    ).subscribe(this.observer);
+    this.initSubscription();
   }
 
   ngOnDestroy(): void {
     this.unsubscribeAll();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.code.previousValue) {
+      this.unsubscribeAll();
+      this.code.wait = true;
+      this.runFinish = false;
+      this.codeDemoConsole = '';
+      this.initSubscription();
+    }
+  }
+
+  initSubscription() {
+    this.initialSubscription = concat(this.firstClickDemo$, this.code.codeToExecute$).subscribe(
+      this.observer
+    );
+  }
   concatDemoConsole(addString: string, icon = true): void {
     const newLine = this.codeDemoConsole ? '\n' : '';
     const iconString = icon ? '>' : '';
-    this.codeDemoConsole = this.codeDemoConsole.concat(
-      `${newLine}${iconString} ${addString}`
-    );
+    this.codeDemoConsole = this.codeDemoConsole.concat(`${newLine}${iconString} ${addString}`);
   }
 
   restart(): void {
@@ -76,9 +85,7 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy {
       this.runFinish = false;
       this.unsubscribeAll();
       this.codeDemoConsole = '';
-      this.restartSubscription = this.code.codeToExecute$.subscribe(
-        this.observer
-      );
+      this.restartSubscription = this.code.codeToExecute$.subscribe(this.observer);
     }
   }
 

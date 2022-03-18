@@ -6,8 +6,11 @@
     <h1 class="nav-head-name">{{ navLabels.name }}</h1>
   </div>
   <ng-container *ngIf="!navLabels.isSimple; else simpleNav">
-    <div *ngFor="let level1 of navLabels.labels" class="nav-section">
-      <details>
+    <div
+      *ngFor="let level1 of navLabels.labels; let i = index"
+      class="nav-section"
+    >
+      <details [open]="complexLabel[i][0]">
         <summary class="nav-section-name1">{{ level1.name }}</summary>
         <ng-container *ngIf="level1.isSimple; else complex">
           <ng-container
@@ -15,8 +18,11 @@
           ></ng-container>
         </ng-container>
         <ng-template #complex>
-          <div *ngFor="let level2 of level1.labels" class="nav-section-2">
-            <details>
+          <div
+            *ngFor="let level2 of level1.labels; let i2 = index"
+            class="nav-section-2"
+          >
+            <details [open]="complexLabel[i][1][i2]">
               <summary class="nav-section-name2">{{ level2.name }}</summary>
               <ng-container
                 *ngTemplateOutlet="
@@ -37,8 +43,11 @@
   </ng-template>
 </nav>
 
-<ng-template #navLabel let-list>
-  <div *ngFor="let label of list" class="nav-label">
+<ng-template #navLabel let-list let-isSelected>
+  <div
+    *ngFor="let label of list"
+    class="nav-label selected-{{ label === selectedLabel }}"
+  >
     <app-link
       [dataLink]="{ name: label, isRelativeRoute: true }"
       [addClass]="'link-nav'"
