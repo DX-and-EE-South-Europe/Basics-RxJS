@@ -38,7 +38,7 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnChanges 
   @ViewChild('demoConsole') demoConsoleElement!: ElementRef;
 
   observer: Observer<unknown> = {
-    next: (value) => (value !== null ? this.concatDemoConsole(String(value)) : null),
+    next: (value) => (value !== null ? this.concatDemoConsole(JSON.stringify(value)) : null),
     error: (error) => this.concatDemoConsole(`Error: ${error}`),
     complete: () => {
       this.runFinish = true;
