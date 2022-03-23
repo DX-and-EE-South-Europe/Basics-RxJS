@@ -16,13 +16,13 @@ export const navOperator: ComplexNav = {
         {
           name: 'General',
           isSimple: true,
-          labels: ['map', 'filter' /* , 'tap' */]
-        }
-        /*  {
+          labels: ['map', 'filter', 'tap']
+        },
+        {
           name: 'Distinct',
           isSimple: true,
           labels: ['distinct', 'distinctUntilChanged']
-        } */
+        }
       ]
     }
   ]

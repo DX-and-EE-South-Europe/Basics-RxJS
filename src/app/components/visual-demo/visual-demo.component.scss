@@ -49,3 +49,34 @@ $color-stop: #e4d1d6;
 .buttons {
   grid-area: button-restart;
 }
+
+@media only screen and (max-width: 800px) {
+  :host {
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-areas:
+      'demo-title . '
+      'demo-code demo-code'
+      'demo-console demo-console'
+      'button-restart button-restart';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2rem 1fr 1fr 2rem;
+    height: 100%;
+    width: 100%;
+  }
+  .demo {
+    border: 0.3rem solid v.$color-bg-light;
+    overflow-y: unset;
+    padding: v.$padding-general;
+    &.demo-code {
+      grid-area: demo-code;
+      overflow-y: unset;
+    }
+    &.demo-console {
+      grid-area: demo-console;
+      height: 15rem;
+      margin-bottom: v.$margin-general;
+      overflow-y: auto;
+    }
+  }
+}

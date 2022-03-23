@@ -1,22 +1,22 @@
 import { DataPage } from '../interfaces';
-import { interval, of } from 'rxjs';
-import { filter, map, take } from 'rxjs/operators';
+import { from, interval, of } from 'rxjs';
+import { distinct, distinctUntilChanged, filter, map, take, tap } from 'rxjs/operators';
 
 export const operatorsPages: DataPage[] = [
   {
     name: 'map',
     description:
-      ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales leoin elit luctus, sed tempus libero venenatis. Pellentesque nulla sapien,mollis quis sollicitudin a, sollicitudin a leo. Mauris odio libero,condimentum eget libero at, ultricies sagittis ante.',
-    ImgUrl: '',
+      'To extra2ct or transform data that return the original Observable.\nEven you can emit a new observable or new data.',
+    imgUrl: 'map',
     demo: {
       codeToExecute$: interval(500).pipe(
         map((val) => val * 3),
-        take(10)
+        take(5)
       ),
       codeString: `interval(500)
         .pipe(
             map((val) => val * 3),
-            take(10)
+            take(5)
         )
         .subscribe(console.log)`
     }
@@ -24,29 +24,77 @@ export const operatorsPages: DataPage[] = [
   {
     name: 'filter',
     description:
-      ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales leoin elit luctus, sed tempus libero venenatis. Pellentesque nulla sapien,mollis quis sollicitudin a, sollicitudin a leo. Mauris odio libero,condimentum eget libero at, ultricies sagittis ante.',
-    ImgUrl: '',
+      "Filter the emissions of the observable.\nIf condition is true, it'll return the Observable emission; otherwise it wont return.",
+    imgUrl: 'filter',
     demo: {
       codeToExecute$: interval(500).pipe(
         filter((val) => val % 2 === 0),
-        take(10)
+        take(5)
       ),
       codeString: `interval(500)
         .pipe(
             filter((val) => val % 2 === 0),
-            take(10)
+            take(5)
         )
         .subscribe(console.log)`
     }
   },
   {
-    name: 'of',
-    description: '',
-    ImgUrl: '',
+    name: 'tap',
+    description: "To execute side-effects for notifications.\nIt doesn't change the Observable",
+    imgUrl: 'tap',
     demo: {
-      codeToExecute$: of('a', 0, [1, 2, 3, 4, 5]),
-      codeString: `of('a',0,[1,2,3,4,5])
+      codeToExecute$: interval(500).pipe(
+        take(3),
+        tap((val) => alert(val))
+      ),
+      codeString: `interval(500)
+        .pipe(
+          take(3),
+          tap((val) => alert(val)),
+        )
         .subscribe(console.log)`
+    }
+  },
+  {
+    name: 'distinct',
+    description: '',
+    imgUrl: 'distinct',
+    demo: {
+      codeToExecute$: from([0, 1, 1, 2, 1, 3, 3]).pipe(distinct((val) => val)),
+      codeString: `from([0,1,1,2,1,3,3])
+        .pipe(
+          distinct((val) => val)
+        )
+        .subscribe(console.log)`
+    }
+  },
+  {
+    name: 'distinctuntilchanged',
+    description: '',
+    imgUrl: 'distinctUntilChanged',
+    demo: {
+      codeToExecute$: from([0, 1, 1, 2, 1, 3, 3]).pipe(
+        distinctUntilChanged((prev, cur) => prev === cur)
+      ),
+      codeString: `from([0,1,1,2,1,3,3])
+        .pipe(
+          distinctUntilChanged((prev, cur) => prev===cur)
+        .subscribe(console.log)`
+    }
+  },
+  {
+    name: 'of',
+    description: 'Observable that emits the values synchronously and completes.',
+    imgUrl: 'of',
+    demo: {
+      codeToExecute$: of('a', 0, [1, 2, 3, 4, 5], { c: 3 }),
+      codeString: `of(
+        'a',
+        0,
+        [1,2,3,4,5], 
+        {c:3}
+      ).subscribe(console.log)`
     }
   }
 ];

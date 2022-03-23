@@ -33,6 +33,6 @@ export interface VisualDemo {
 export interface DataPage {
   name: string;
   description: string;
-  ImgUrl: string;
+  imgUrl: string;
   demo: VisualDemo;
 }

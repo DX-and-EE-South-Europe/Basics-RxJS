@@ -1,27 +1,67 @@
 @use '/src/styles/var.scss' as v;
+
+:host {
+  display: grid;
+  grid-template-rows: 3rem auto 1fr;
+  height: 100%;
+}
 h1 {
   font-size: 2rem;
+  grid-row: 1;
 }
 
 section {
-  align-items: flex-start;
-  display: flex;
   margin: v.$margin-general 0;
 
   &.section-concept {
+    display: grid;
+    grid-gap: v.$padding-elements;
+    grid-row: 2;
+    grid-template-columns: fit-content(50%) 1fr fit-content(50%);
+    grid-template-rows: 1fr;
     .concept-definition {
       font-size: 1.1rem;
+      grid-column: 1;
+      grid-row: 1;
       margin-right: v.$margin-elements;
+      white-space: pre-wrap;
     }
 
     img {
       background-color: v.$color-bg-Ultralight;
-      height: 7rem;
-      width: 70rem;
+      grid-column: 3;
+      grid-row: 1;
+      height: auto;
+      width: 100%;
     }
   }
 
   &.section-demo {
+    align-items: flex-start;
+    display: flex;
+    grid-row: 3;
     height: 20rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  section {
+    &.section-concept {
+      display: grid;
+      grid-gap: v.$padding-elements;
+      grid-row: 2;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      .concept-definition {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      img {
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
+      }
+    }
   }
 }

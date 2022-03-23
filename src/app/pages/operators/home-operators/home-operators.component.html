@@ -1,1 +1,26 @@
-<p>home-operators works!</p>
+<h1>{{ operatorsInfo.title }}</h1>
+<p class="description">{{ operatorsInfo.description }}</p>
+<dl>
+  <div>
+    <dt class="description-kind">{{ operatorsInfo.pipeableText.name }}</dt>
+    <ul class="list-level1">
+      <li *ngFor="let text of operatorsInfo.pipeableText.list">{{ text }}</li>
+      <ul class="list-level2">
+        <li *ngFor="let example of operatorsInfo.pipeableText.examples">{{ example }}</li>
+      </ul>
+    </ul>
+    <code class="exampleCode">
+      <pre>{{ operatorsInfo.pipeableText.codeExample }}</pre>
+    </code>
+  </div>
+  <div>
+    <dt class="description-kind">{{ operatorsInfo.creationText.name }}</dt>
+    <ul class="list-level1">
+      <li *ngFor="let text of operatorsInfo.creationText.list">{{ text }}</li>
+    </ul>
+    <code class="exampleCode">
+      <pre>{{ operatorsInfo.creationText.codeExample }}</pre>
+    </code>
+  </div>
+</dl>
+<p class="note">{{ operatorsInfo.note }}</p>
