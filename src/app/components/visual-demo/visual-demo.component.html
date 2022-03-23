@@ -4,25 +4,13 @@
     <pre>{{ code.codeString }}</pre>
   </code>
 </div>
-<div
-  class="demo-console demo"
-  #demoConsole
-  [attr.wait]="code.wait ? code.wait : null"
->
+<div class="demo-console demo" #demoConsole [attr.wait]="code.wait ? code.wait : null">
   <p *ngIf="code.wait">Please click to run</p>
   <samp>
     <pre>{{ codeDemoConsole }}</pre>
   </samp>
 </div>
 <div class="buttons">
-  <button class="button-restart" (click)="restart()" [disabled]="!runFinish">
-    Restart
-  </button>
-  <button
-    class="button-stop"
-    (click)="stop()"
-    [disabled]="code.wait || runFinish"
-  >
-    Stop
-  </button>
+  <button class="button-restart" (click)="restart()" [disabled]="!runFinish">Restart</button>
+  <button class="button-stop" (click)="stop()" [disabled]="code.wait || runFinish">Stop</button>
 </div>
