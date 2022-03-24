@@ -70,7 +70,7 @@ export const operatorsPages: DataPage[] = [
     }
   },
   {
-    name: 'distinctuntilchanged',
+    name: 'distinctUntilChanged',
     description: '',
     imgUrl: 'distinctUntilChanged',
     demo: {

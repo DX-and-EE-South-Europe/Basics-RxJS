@@ -20,8 +20,9 @@ export class DynamicNavComponent implements OnInit {
   constructor(private _router: Router) {
     this.subscriptionRouter = this._router.events.pipe(catchUrlRouter()).subscribe((url) => {
       if (!!url) {
-        const selectLabel = url.match(/[\w]+/gi);
-        this.selectedLabel = !!selectLabel ? selectLabel[1] : '';
+        const selectLabel = url.match(/[\w-]+/gi);
+        this.selectedLabel =
+          !!selectLabel && selectLabel.length > 1 ? selectLabel[1].replace(/-/gm, '') : '';
       }
     });
   }
@@ -30,11 +31,16 @@ export class DynamicNavComponent implements OnInit {
     this.complexLabel = this.navLabels.labels.map((level1: any) => {
       if (typeof level1.labels[0] === 'string') {
         return [
-          level1.labels.some((labelName: any) => labelName === this.selectedLabel) ? true : false
+          level1.labels.some((labelName: any) => labelName.toLowerCase() === this.selectedLabel)
+            ? true
+            : false
         ];
       }
+
       const findArray: boolean[] = level1.labels.map((labelName: any) =>
-        labelName.labels.some((subLabelName: any) => subLabelName === this.selectedLabel)
+        labelName.labels.some(
+          (subLabelName: any) => subLabelName.toLowerCase() === this.selectedLabel
+        )
       );
       return [findArray.some((x: boolean) => !!x), findArray];
     });

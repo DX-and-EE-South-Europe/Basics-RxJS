@@ -16,7 +16,11 @@ export class LinkComponent implements OnInit {
   ngOnInit(): void {
     const routeAux = this.dataLink.isRelativeRoute ? '' : '/';
     this.route = `${routeAux}${this.dataLink.name
-      .toLowerCase()
-      .replace(' ', '-')}`;
+      .replace(/.{1}[A-Z ]/gm, this.transformRoute)
+      .toLowerCase()}`;
+  }
+
+  transformRoute(arg: string): string {
+    return arg[1].match(/\s/) ? arg[0] + '-' : arg[0] + '-' + arg[1];
   }
 }
