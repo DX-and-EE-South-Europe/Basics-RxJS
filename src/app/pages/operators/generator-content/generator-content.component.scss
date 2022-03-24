@@ -2,7 +2,7 @@
 
 :host {
   display: grid;
-  grid-template-rows: 3rem auto 1fr;
+  grid-template-rows: auto auto 1fr;
   height: 100%;
 }
 h1 {
@@ -24,7 +24,7 @@ section {
       grid-column: 1;
       grid-row: 1;
       margin-right: v.$margin-elements;
-      white-space: pre-wrap;
+      white-space: wrap;
     }
 
     img {
@@ -40,7 +40,6 @@ section {
     align-items: flex-start;
     display: flex;
     grid-row: 3;
-    height: 20rem;
   }
 }
 

@@ -1,10 +1,15 @@
 <h2 class="demo-title">Demo</h2>
-<div class="demo-code demo">
+<div class="demo-code demo" #demoCode>
   <code>
     <pre>{{ code.codeString }}</pre>
   </code>
 </div>
-<div class="demo-console demo" #demoConsole [attr.wait]="code.wait ? code.wait : null">
+<div
+  class="demo-console demo"
+  #demoConsole
+  [attr.wait]="code.wait ? code.wait : null"
+  [style.maxHeight.px]="demoCode.offsetHeight - 40"
+>
   <p *ngIf="code.wait">Please click to run</p>
   <samp>
     <pre>{{ codeDemoConsole }}</pre>
