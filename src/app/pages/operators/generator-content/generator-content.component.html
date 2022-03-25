@@ -1,10 +1,10 @@
 <ng-container *ngIf="dataPage">
-	<h1>{{ dataPage.name }}</h1>
-	<section class="section-concept">
-		<p class="concept-definition">{{ dataPage.description }}</p>
-		<img class="concept-img" src="assets/img/diagrams/{{ dataPage.imgUrl }}.PNG" />
-	</section>
-	<section class="section-demo">
-		<app-visual-demo [code]="dataPage.demo"></app-visual-demo>
-	</section>
+  <h1>{{ dataPage.name }}</h1>
+  <section class="section-concept">
+    <p class="concept-definition">{{ dataPage.description }}</p>
+    <img class="concept-img" src="assets/img/diagrams/{{ dataPage.imgUrl }}.PNG" />
+  </section>
+  <section class="section-demo">
+    <app-parent-visual-demo [dataDemos]="dataPage.demo"></app-parent-visual-demo>
+  </section>
 </ng-container>

@@ -1,0 +1,17 @@
+@use '/src/styles/var.scss' as v;
+
+:host {
+  margin: 0 0 v.$margin-general 0;
+  width: 100%;
+}
+.demo-title {
+  font-size: 1.3rem;
+  padding: 0;
+}
+.visual-demo {
+  margin: v.$margin-elements 0;
+}
+
+:nth-child(2) {
+  margin: 0.25rem 0;
+}

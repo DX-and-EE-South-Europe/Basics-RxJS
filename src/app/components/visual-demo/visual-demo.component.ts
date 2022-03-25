@@ -1,13 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnDestroy,
-  SimpleChanges,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
 import { concat, fromEvent, Observable, Observer, of, Subscription } from 'rxjs';
 import { first, map, tap } from 'rxjs/operators';
 import { VisualDemo } from 'src/app/common/interfaces';
@@ -17,7 +8,7 @@ import { VisualDemo } from 'src/app/common/interfaces';
   templateUrl: './visual-demo.component.html',
   styleUrls: ['./visual-demo.component.scss']
 })
-export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnChanges {
+export class VisualDemoComponent implements AfterViewInit, OnDestroy {
   codeDemoConsole = '';
   runFinish = false;
   firstClickDemo$!: Observable<PointerEvent | null>;
@@ -59,21 +50,12 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnChanges 
     this.unsubscribeAll();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.code.previousValue) {
-      this.unsubscribeAll();
-      this.code.wait = true;
-      this.runFinish = false;
-      this.codeDemoConsole = '';
-      this.initSubscription();
-    }
-  }
-
   initSubscription() {
     this.initialSubscription = concat(this.firstClickDemo$, this.code.codeToExecute$).subscribe(
       this.observer
     );
   }
+
   concatDemoConsole(addString: string, icon = true): void {
     const newLine = this.codeDemoConsole ? '\n' : '';
     const iconString = icon ? '>' : '';

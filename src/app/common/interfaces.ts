@@ -34,5 +34,5 @@ export interface DataPage {
   name: string;
   description: string;
   imgUrl: string;
-  demo: VisualDemo;
+  demo: VisualDemo[];
 }

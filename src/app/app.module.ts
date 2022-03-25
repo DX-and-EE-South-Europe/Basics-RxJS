@@ -10,6 +10,7 @@ import { DynamicNavComponent } from './components/dynamic-nav/dynamic-nav.compon
 import { VisualDemoComponent } from './components/visual-demo/visual-demo.component';
 import { HomeOperatorsComponent } from './pages/operators/home-operators/home-operators.component';
 import { GeneratorContentComponent } from './pages/operators/generator-content/generator-content.component';
+import { ParentVisualDemoComponent } from './components/parent-visual-demo/parent-visual-demo.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GeneratorContentComponent } from './pages/operators/generator-content/g
     DynamicNavComponent,
     VisualDemoComponent,
     HomeOperatorsComponent,
-    GeneratorContentComponent
+    GeneratorContentComponent,
+    ParentVisualDemoComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
