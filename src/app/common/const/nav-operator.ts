@@ -22,6 +22,11 @@ export const navOperator: ComplexNav = {
           name: 'Distinct',
           isSimple: true,
           labels: ['distinct', 'distinctUntilChanged']
+        },
+        {
+          name: 'Time',
+          isSimple: true,
+          labels: ['debounceTime']
         }
       ]
     }

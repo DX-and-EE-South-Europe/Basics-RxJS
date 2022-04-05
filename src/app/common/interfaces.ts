@@ -1,4 +1,5 @@
-import { Observable } from 'rxjs';
+import { debounceTime, Observable } from 'rxjs';
+import { AddedComponentVDLabelT } from './types';
 
 export interface DataLink {
   name: string;
@@ -27,6 +28,7 @@ export interface SubComplexNav {
 export interface VisualDemo {
   codeToExecute$: Observable<unknown>;
   codeString: string;
+  added: AddComponentVD;
   wait?: boolean;
 }
 
@@ -35,4 +37,9 @@ export interface DataPage {
   description: string;
   imgUrl: string;
   demo: VisualDemo[];
+}
+
+export interface AddComponentVD {
+  label: AddedComponentVDLabelT;
+  number?: number;
 }

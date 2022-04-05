@@ -3,6 +3,13 @@
 $color-stop: #e4d1d6;
 
 :host {
+  display: block;
+  height: 100%;
+  min-height: 15rem;
+  width: 100%;
+}
+
+.visual-demo-container {
   display: grid;
   grid-template-areas:
     'demo-code . demo-console'
@@ -12,44 +19,61 @@ $color-stop: #e4d1d6;
   height: 100%;
   min-height: 15rem;
   width: 100%;
-}
 
-.demo {
-  border: 0.3rem solid v.$color-bg-light;
-  overflow-y: auto;
-  padding: v.$padding-general;
-  &.demo-code {
-    grid-area: demo-code;
+  &.added {
+    grid-template-areas:
+      'added-element . demo-console'
+      'demo-code . demo-console'
+      'demo-code . button-restart';
+    grid-template-rows: 2.5rem 1fr 2rem;
   }
-  &.demo-console {
-    grid-area: demo-console;
-    margin-bottom: v.$margin-general;
-  }
-  &[wait] {
-    align-items: center;
-    background-color: rgba($color: $color-stop, $alpha: 0.7);
+  .added-element {
     display: flex;
-    font-size: 1.3rem;
-    justify-content: center;
-    &:hover {
-      background-color: rgba($color: $color-stop, $alpha: 1);
-      cursor: pointer;
+    flex-direction: row;
+    grid-area: added-element;
+    justify-content: flex-end;
+    margin-bottom: v.$margin-general;
+    .secondary-input {
+      margin: 0 0.5rem;
     }
   }
-  pre,
-  code {
-    font-family: 'monospace';
-    line-height: 1.3rem;
-    white-space: pre-wrap;
+
+  .demo {
+    border: 0.3rem solid v.$color-bg-light;
+    overflow-y: auto;
+    padding: v.$padding-general;
+    &.demo-code {
+      grid-area: demo-code;
+    }
+    &.demo-console {
+      grid-area: demo-console;
+      margin-bottom: v.$margin-general;
+    }
+    &[wait] {
+      align-items: center;
+      background-color: rgba($color: $color-stop, $alpha: 0.7);
+      display: flex;
+      font-size: 1.3rem;
+      justify-content: center;
+      &:hover {
+        background-color: rgba($color: $color-stop, $alpha: 1);
+        cursor: pointer;
+      }
+    }
+    pre,
+    code {
+      font-family: 'monospace';
+      line-height: 1.3rem;
+      white-space: pre-wrap;
+    }
   }
-}
-.buttons {
-  grid-area: button-restart;
+  .buttons {
+    grid-area: button-restart;
+  }
 }
 
 @media only screen and (max-width: 800px) {
-  :host {
-    display: grid;
+  .visual-demo-container {
     grid-gap: 0.5rem;
     grid-template-areas:
       'demo-code'
@@ -57,22 +81,38 @@ $color-stop: #e4d1d6;
       'button-restart';
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto 2rem;
-    height: 100%;
-    width: 100%;
-  }
-  .demo {
-    border: 0.3rem solid v.$color-bg-light;
-    overflow-y: unset;
-    padding: v.$padding-general;
-    &.demo-code {
-      grid-area: demo-code;
-      overflow-y: unset;
+
+    .added-element {
+      justify-content: center;
+      .secondary-button {
+        background-color: white;
+        border: 0.2rem solid v.$color-bg-light;
+      }
     }
-    &.demo-console {
-      grid-area: demo-console;
-      height: 15rem;
-      margin-bottom: v.$margin-general;
-      overflow-y: auto;
+
+    &.added {
+      grid-template-areas:
+        'demo-code'
+        'added-element'
+        'demo-console '
+        'button-restart';
+      grid-template-rows: 1fr 2.5rem auto 2rem;
+    }
+
+    .demo {
+      border: 0.3rem solid v.$color-bg-light;
+      overflow-y: unset;
+      padding: v.$padding-general;
+      &.demo-code {
+        grid-area: demo-code;
+        overflow-y: unset;
+      }
+      &.demo-console {
+        grid-area: demo-console;
+        height: 15rem;
+        margin-bottom: v.$margin-general;
+        overflow-y: auto;
+      }
     }
   }
 }

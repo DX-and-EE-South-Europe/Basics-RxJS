@@ -6,20 +6,21 @@ export const operatorsPages: DataPage[] = [
   {
     name: 'map',
     description:
-      'To extra2ct or transform data that return the original Observable.\nEven you can emit a new observable or new data.',
+      'To extract or transform data that return the original Observable.\nEven you can emit a new observable or new data.',
     imgUrl: 'map',
     demo: [
       {
         codeToExecute$: interval(500).pipe(
           map((val) => val * 3),
-          take(10)
+          take(20)
         ),
         codeString: `interval(500)
         .pipe(
             map((val) => val * 3),
-            take(5)
+            take(20)
         )
-        .subscribe(console.log)`
+        .subscribe(console.log)`,
+        added: { label: 'none' }
       }
     ]
   },
@@ -39,7 +40,8 @@ export const operatorsPages: DataPage[] = [
             filter((val) => val % 2 === 0),
             take(5)
         )
-        .subscribe(console.log)`
+        .subscribe(console.log)`,
+        added: { label: 'none' }
       }
     ]
   },
@@ -58,7 +60,8 @@ export const operatorsPages: DataPage[] = [
           take(3),
           tap((val) => alert(val)),
         )
-        .subscribe(console.log)`
+        .subscribe(console.log)`,
+        added: { label: 'none' }
       }
     ]
   },
@@ -73,7 +76,8 @@ export const operatorsPages: DataPage[] = [
         .pipe(
           distinct((val) => val)
         )
-        .subscribe(console.log)`
+        .subscribe(console.log)`,
+        added: { label: 'none' }
       }
     ]
   },
@@ -112,7 +116,8 @@ export const operatorsPages: DataPage[] = [
       })
       .pipe(
         distinctUntilChanged((prev, cur) => prev===cur)
-      .subscribe(console.log)`
+      .subscribe(console.log)`,
+        added: { label: 'none' }
       }
     ]
   },
@@ -128,7 +133,70 @@ export const operatorsPages: DataPage[] = [
         0,
         [1,2,3,4,5], 
         {c:3}
-      ).subscribe(console.log)`
+      ).subscribe(console.log)`,
+        added: { label: 'none' }
+      }
+    ]
+  },
+  {
+    name: 'debounceTime',
+    description: 'Observable that emits the values synchronously and completes.',
+    imgUrl: 'of',
+    demo: [
+      {
+        codeToExecute$: interval(500).pipe(
+          map((val) => val * 3),
+          take(20)
+        ),
+        codeString:
+          'const click$ = fromEvent(input, "change");\n\nclick$.pipe(\n\tdebounceTime(3000)\n).subscribe(console.log);',
+        added: { label: 'input', number: 1 }
+      },
+      {
+        codeToExecute$: interval(500).pipe(
+          map((val) => val * 3),
+          take(20)
+        ),
+        codeString: `interval(500)
+        .pipe(
+            map((val) => val * 3),
+            take(5)
+        )
+        .subscribe(console.log)`,
+        added: { label: 'button', number: 2 }
+      },
+      {
+        codeToExecute$: new Observable<number>((subs) => {
+          const dataArray: number[] = [0, 1, 1, 2, 1, 3, 3, 4];
+          const timeNext = 500;
+          let count = 0;
+          const interval = setInterval((): void => subs.next(dataArray[count++]), timeNext);
+          function stop() {
+            clearInterval(interval);
+            subs.complete();
+          }
+          setTimeout(() => stop(), timeNext * dataArray.length);
+          return () => stop();
+        }).pipe(distinctUntilChanged((prev, cur) => prev === cur)),
+        codeString: `new Observable<number>((subs) => {
+        const dataArray: number[] = [0, 1, 1, 2, 1, 3, 3, 4];
+        const timeNext = 500;
+        let count = 0;
+        const interval = setInterval(
+          (): void => subs.next(dataArray[count++]), 
+          timeNext
+        );
+        function stop() {
+          clearInterval(interval);
+          subs.complete();
+        }
+        setTimeout(() => stop(), timeNext * dataArray.length);
+        return () => stop();
+      })
+      .pipe(
+        distinctUntilChanged((prev, cur) => prev===cur)
+      .subscribe(console.log)`,
+        added: { label: 'none' }
       }
     ]
   }

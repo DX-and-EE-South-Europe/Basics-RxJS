@@ -1,23 +1,33 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { concat, fromEvent, Observable, Observer, of, Subscription } from 'rxjs';
 import { first, map, tap } from 'rxjs/operators';
-import { VisualDemo } from 'src/app/common/interfaces';
+import { AddComponentVD, VisualDemo } from 'src/app/common/interfaces';
 
 @Component({
   selector: 'app-visual-demo',
   templateUrl: './visual-demo.component.html',
   styleUrls: ['./visual-demo.component.scss']
 })
-export class VisualDemoComponent implements AfterViewInit, OnDestroy {
+export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
   codeDemoConsole = '';
   runFinish = false;
   firstClickDemo$!: Observable<PointerEvent | null>;
   initialSubscription!: Subscription;
   restartSubscription!: Subscription;
+  added!: { label: AddComponentVD; number: number };
 
   private _code: VisualDemo = {
     codeToExecute$: of(),
     codeString: '',
+    added: { label: 'none' },
     wait: true
   };
   get code(): VisualDemo {
@@ -36,6 +46,11 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy {
       this.concatDemoConsole('Complete');
     }
   };
+
+  ngOnInit(): void {
+    if (this.code.added.label !== 'none' && !this.code.added.hasOwnProperty('number'))
+      this.code.added = { ...this.code.added, number: 1 };
+  }
 
   ngAfterViewInit(): void {
     this.firstClickDemo$ = fromEvent(this.demoConsoleElement.nativeElement, 'click').pipe(

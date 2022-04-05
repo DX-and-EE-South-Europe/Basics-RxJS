@@ -1,20 +1,37 @@
-<div class="demo-code demo" #demoCode>
-  <code>
-    <pre>{{ code.codeString }}</pre>
-  </code>
-</div>
-<div
-  class="demo-console demo"
-  #demoConsole
-  [attr.wait]="code.wait ? code.wait : null"
-  [style.maxHeight.px]="demoCode.offsetHeight - 40"
->
-  <p *ngIf="code.wait">Please click to run</p>
-  <samp>
-    <pre>{{ codeDemoConsole }}</pre>
-  </samp>
-</div>
-<div class="buttons">
-  <button class="button-restart" (click)="restart()" [disabled]="!runFinish">Restart</button>
-  <button class="button-stop" (click)="stop()" [disabled]="code.wait || runFinish">Stop</button>
+<div [ngClass]="['visual-demo-container', code.added.label !== 'none' ? 'added' : '']">
+  <ng-template [ngIf]="code.added.label !== 'none'">
+    <ng-container [ngSwitch]="code.added.label">
+      <div class="added-element">
+        <ng-template [ngSwitchCase]="'button'">
+          <button *ngFor="let numb of [].constructor(code.added.number)" class="secondary-button">Button</button>
+        </ng-template>
+        <ng-template [ngSwitchCase]="'input'">
+          <label *ngFor="let numb of [].constructor(code.added.number); let i = index" class="secondary-input">
+            Input {{ i + 1 }}:
+            <input type="text" />
+          </label>
+        </ng-template>
+      </div>
+    </ng-container>
+  </ng-template>
+  <div class="demo-code demo" #demoCode>
+    <code>
+      <pre>{{ code.codeString }}</pre>
+    </code>
+  </div>
+  <div
+    class="demo-console demo"
+    #demoConsole
+    [attr.wait]="code.wait ? code.wait : null"
+    [style.maxHeight.px]="demoCode.offsetHeight - (code.added.label !== 'none' ? 8 : 40)"
+  >
+    <p *ngIf="code.wait">Please click to run</p>
+    <samp>
+      <pre>{{ codeDemoConsole }}</pre>
+    </samp>
+  </div>
+  <div class="buttons">
+    <button class="button-restart" (click)="restart()" [disabled]="!runFinish">Restart</button>
+    <button class="button-stop" (click)="stop()" [disabled]="code.wait || runFinish">Stop</button>
+  </div>
 </div>
