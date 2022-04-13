@@ -1,14 +1,26 @@
-<div [ngClass]="['visual-demo-container', code.added.label !== 'none' ? 'added' : '']">
+<div
+  [ngClass]="[
+    'visual-demo-container',
+    code.added.label !== 'none' ? 'added' : '',
+    code.added.number && code.added.label === 'input' && code.added.number > 1 ? 'manyInputsAdded' : ''
+  ]"
+  #addCode
+>
   <ng-template [ngIf]="code.added.label !== 'none'">
     <ng-container [ngSwitch]="code.added.label">
       <div class="added-element">
         <ng-template [ngSwitchCase]="'button'">
-          <button *ngFor="let numb of [].constructor(code.added.number)" class="secondary-button">Button</button>
+          <button #added *ngFor="let numb of [].constructor(code.added.number); let i = index" class="secondary-button">
+            {{ code.added.names && code.added.names[i] ? code.added.names[i] : 'Button' }}
+          </button>
         </ng-template>
         <ng-template [ngSwitchCase]="'input'">
-          <label *ngFor="let numb of [].constructor(code.added.number); let i = index" class="secondary-input">
-            Input {{ i + 1 }}:
-            <input type="text" />
+          <label #added *ngFor="let numb of [].constructor(code.added.number); let i = index" class="secondary-input">
+            <span>Input {{ i + 1 }}:</span>
+            <input
+              type="text"
+              [placeholder]="code.added.names && code.added.names[i] ? code.added.names[i] : 'Write something'"
+            />
           </label>
         </ng-template>
       </div>
@@ -23,7 +35,7 @@
     class="demo-console demo"
     #demoConsole
     [attr.wait]="code.wait ? code.wait : null"
-    [style.maxHeight.px]="demoCode.offsetHeight - (code.added.label !== 'none' ? 8 : 40)"
+    [style.maxHeight.px]="demoCode.offsetHeight + addCode.offsetHeight - (code.added.label !== 'none' ? 8 : 40)"
   >
     <p *ngIf="code.wait">Please click to run</p>
     <samp>

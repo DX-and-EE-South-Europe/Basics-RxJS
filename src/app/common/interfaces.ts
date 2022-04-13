@@ -1,45 +1,49 @@
-import { debounceTime, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AddedComponentVDLabelT } from './types';
 
-export interface DataLink {
+interface DataLink {
   name: string;
   isRelativeRoute: boolean;
   theme?: 'link-header';
 }
 
-export interface BaseNav {
+interface BaseNav {
   name: string;
   isSimple: boolean;
   labels: string[];
 }
 
-export interface ComplexNav {
+interface ComplexNav {
   name: string;
   isSimple: boolean;
   labels: SubComplexNav[];
 }
 
-export interface SubComplexNav {
+interface SubComplexNav {
   name: string;
   isSimple: boolean;
   labels: BaseNav[] | string[];
 }
 
-export interface VisualDemo {
-  codeToExecute$: Observable<unknown>;
+interface VisualDemo {
+  codeToExecute: (o?: any) => Observable<unknown>;
   codeString: string;
   added: AddComponentVD;
   wait?: boolean;
 }
 
-export interface DataPage {
+interface DataPage {
   name: string;
   description: string;
   imgUrl: string;
   demo: VisualDemo[];
 }
 
-export interface AddComponentVD {
+interface AddComponentVD {
   label: AddedComponentVDLabelT;
   number?: number;
+  names?: string[];
+  event?: string;
 }
+
+export { DataLink, BaseNav, ComplexNav, SubComplexNav, VisualDemo, DataPage, AddComponentVD };

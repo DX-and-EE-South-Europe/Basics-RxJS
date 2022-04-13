@@ -5,11 +5,13 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  ViewChild
+  QueryList,
+  ViewChild,
+  ViewChildren
 } from '@angular/core';
 import { concat, fromEvent, Observable, Observer, of, Subscription } from 'rxjs';
 import { first, map, tap } from 'rxjs/operators';
-import { AddComponentVD, VisualDemo } from 'src/app/common/interfaces';
+import { VisualDemo } from 'src/app/common/interfaces';
 
 @Component({
   selector: 'app-visual-demo',
@@ -22,12 +24,11 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
   firstClickDemo$!: Observable<PointerEvent | null>;
   initialSubscription!: Subscription;
   restartSubscription!: Subscription;
-  added!: { label: AddComponentVD; number: number };
-
+  obsAddedElements: Observable<unknown>[] = [];
   private _code: VisualDemo = {
-    codeToExecute$: of(),
+    codeToExecute: () => of(),
     codeString: '',
-    added: { label: 'none' },
+    added: { label: 'none', names: [] },
     wait: true
   };
   get code(): VisualDemo {
@@ -37,6 +38,7 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
     this._code = { ...this._code, ...value };
   }
   @ViewChild('demoConsole') demoConsoleElement!: ElementRef;
+  @ViewChildren('added') addedElements!: QueryList<ElementRef>;
 
   observer: Observer<unknown> = {
     next: (value) => (value !== null ? this.concatDemoConsole(JSON.stringify(value)) : null),
@@ -47,9 +49,13 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
     }
   };
 
+  callCodeToExecute(): Observable<unknown> {
+    return this.code.codeToExecute({ obs: this.obsAddedElements });
+  }
+
   ngOnInit(): void {
     if (this.code.added.label !== 'none' && !this.code.added.hasOwnProperty('number'))
-      this.code.added = { ...this.code.added, number: 1 };
+      this.code.added = { ...this.code.added, number: 1, names: [] };
   }
 
   ngAfterViewInit(): void {
@@ -58,6 +64,23 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
       tap(() => (this.code.wait = false)),
       map(() => null)
     );
+
+    if (this.addedElements.length > 0) {
+      for (let i = 0; i < this.addedElements.length; ++i) {
+        const event =
+          this.code.added.event ??
+          (() => {
+            switch (this.code.added.label) {
+              case 'input':
+                return 'input';
+              case 'button':
+              default:
+                return 'click';
+            }
+          })();
+        this.obsAddedElements.push(fromEvent(this.addedElements.get(i)?.nativeElement, event));
+      }
+    }
     this.initSubscription();
   }
 
@@ -66,9 +89,11 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   initSubscription() {
-    this.initialSubscription = concat(this.firstClickDemo$, this.code.codeToExecute$).subscribe(
-      this.observer
-    );
+    const obs$ = this.code.wait
+      ? concat(this.firstClickDemo$, this.callCodeToExecute())
+      : this.callCodeToExecute();
+
+    this.initialSubscription = obs$.subscribe(this.observer);
   }
 
   concatDemoConsole(addString: string, icon = true): void {
@@ -82,7 +107,7 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
       this.runFinish = false;
       this.unsubscribeAll();
       this.codeDemoConsole = '';
-      this.restartSubscription = this.code.codeToExecute$.subscribe(this.observer);
+      this.restartSubscription = this.callCodeToExecute().subscribe(this.observer);
     }
   }
 

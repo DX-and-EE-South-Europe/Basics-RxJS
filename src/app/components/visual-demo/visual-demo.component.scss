@@ -26,15 +26,26 @@ $color-stop: #e4d1d6;
       'demo-code . demo-console'
       'demo-code . button-restart';
     grid-template-rows: 2.5rem 1fr 2rem;
+    &.manyInputsAdded {
+      grid-template-rows: 2.5rem 1fr 2rem;
+    }
   }
   .added-element {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     grid-area: added-element;
     justify-content: flex-end;
     margin-bottom: v.$margin-general;
+
     .secondary-input {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       margin: 0 0.5rem;
+      span {
+        line-height: 1.8rem;
+      }
     }
   }
 
@@ -60,11 +71,10 @@ $color-stop: #e4d1d6;
         cursor: pointer;
       }
     }
-    pre,
-    code {
+    pre {
       font-family: 'monospace';
       line-height: 1.3rem;
-      white-space: pre-wrap;
+      overflow-x: auto;
     }
   }
   .buttons {
@@ -72,7 +82,7 @@ $color-stop: #e4d1d6;
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 950px) {
   .visual-demo-container {
     grid-gap: 0.5rem;
     grid-template-areas:
@@ -97,6 +107,9 @@ $color-stop: #e4d1d6;
         'demo-console '
         'button-restart';
       grid-template-rows: 1fr 2.5rem auto 2rem;
+      &.manyInputsAdded {
+        grid-template-rows: 1fr 2.5rem auto 2rem;
+      }
     }
 
     .demo {
@@ -112,6 +125,25 @@ $color-stop: #e4d1d6;
         height: 15rem;
         margin-bottom: v.$margin-general;
         overflow-y: auto;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1385px) and (min-width: 951px) {
+  .visual-demo-container {
+    &.added {
+      &.manyInputsAdded {
+        grid-template-rows: 4rem 1fr 2rem;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 800px) {
+  .visual-demo-container {
+    &.added {
+      &.manyInputsAdded {
+        grid-template-rows: 1fr 4rem auto 2rem;
       }
     }
   }

@@ -15,3 +15,13 @@
 :nth-child(2) {
   margin: 0.25rem 0;
 }
+
+hr:last-child {
+  visibility: hidden;
+}
+
+@media only screen and (min-width: 950px) {
+  hr {
+    visibility: hidden;
+  }
+}
