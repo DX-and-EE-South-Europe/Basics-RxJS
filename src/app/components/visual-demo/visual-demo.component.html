@@ -35,7 +35,11 @@
     class="demo-console demo"
     #demoConsole
     [attr.wait]="code.wait ? code.wait : null"
-    [style.maxHeight.px]="demoCode.offsetHeight + addCode.offsetHeight - (code.added.label !== 'none' ? 8 : 40)"
+    [style.maxHeight.px]="
+      code.wait
+        ? demoCode.offsetHeight + addCode.offsetHeight - (code.added.label !== 'none' ? 8 : 40)
+        : this.demoConsole.offsetHeight
+    "
   >
     <p *ngIf="code.wait">Please click to run</p>
     <samp>

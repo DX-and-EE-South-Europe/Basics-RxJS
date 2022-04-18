@@ -41,7 +41,8 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
   @ViewChildren('added') addedElements!: QueryList<ElementRef>;
 
   observer: Observer<unknown> = {
-    next: (value) => (value !== null ? this.concatDemoConsole(JSON.stringify(value)) : null),
+    next: (value) =>
+      value !== null ? this.concatDemoConsole(JSON.stringify(value, null, 4)) : null,
     error: (error) => this.concatDemoConsole(`Error: ${error}`),
     complete: () => {
       this.runFinish = true;
