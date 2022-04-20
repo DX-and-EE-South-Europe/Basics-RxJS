@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { VisualDemoComponent } from './components/visual-demo/visual-demo.compon
 import { HomeOperatorsComponent } from './pages/operators/home-operators/home-operators.component';
 import { GeneratorContentComponent } from './pages/operators/generator-content/generator-content.component';
 import { ParentVisualDemoComponent } from './components/parent-visual-demo/parent-visual-demo.component';
+import { JsonServerService } from './services/json-server.service';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,8 @@ import { ParentVisualDemoComponent } from './components/parent-visual-demo/paren
     GeneratorContentComponent,
     ParentVisualDemoComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [JsonServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

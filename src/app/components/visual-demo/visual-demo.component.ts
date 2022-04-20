@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import {
   AfterViewInit,
   Component,
@@ -12,6 +13,7 @@ import {
 import { concat, fromEvent, Observable, Observer, of, Subscription } from 'rxjs';
 import { first, map, tap } from 'rxjs/operators';
 import { VisualDemo } from 'src/app/common/interfaces';
+import { JsonServerService } from 'src/app/services/json-server.service';
 
 @Component({
   selector: 'app-visual-demo',
@@ -29,7 +31,8 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
     codeToExecute: () => of(),
     codeString: '',
     added: { label: 'none', names: [] },
-    wait: true
+    wait: true,
+    needJsonServer: false
   };
   get code(): VisualDemo {
     return this._code;
@@ -39,6 +42,8 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
   }
   @ViewChild('demoConsole') demoConsoleElement!: ElementRef;
   @ViewChildren('added') addedElements!: QueryList<ElementRef>;
+
+  constructor(private _jss: JsonServerService) {}
 
   observer: Observer<unknown> = {
     next: (value) =>
@@ -51,7 +56,10 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
   };
 
   callCodeToExecute(): Observable<unknown> {
-    return this.code.codeToExecute({ obs: this.obsAddedElements });
+    const paramsCodeToExecute = this.code.needJsonServer
+      ? { jss: this._jss, obs: this.obsAddedElements }
+      : { obs: this.obsAddedElements };
+    return this.code.codeToExecute(paramsCodeToExecute);
   }
 
   ngOnInit(): void {
