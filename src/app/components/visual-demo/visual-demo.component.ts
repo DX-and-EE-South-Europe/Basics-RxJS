@@ -48,7 +48,15 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
   observer: Observer<unknown> = {
     next: (value) =>
       value !== null ? this.concatDemoConsole(JSON.stringify(value, null, 4)) : null,
-    error: (error) => this.concatDemoConsole(`Error: ${error}`),
+    error: (error: HttpErrorResponse | Error) => {
+      const textError =
+        error instanceof Error
+          ? `message: ${error.message}`
+          : `status: ${error.status}\n\tstatusText: ${error.statusText}`;
+      this.unsubscribeAll();
+      this.initSubscription();
+      return this.concatDemoConsole(`Error:\n\t${textError}`);
+    },
     complete: () => {
       this.runFinish = true;
       this.concatDemoConsole('Complete');
