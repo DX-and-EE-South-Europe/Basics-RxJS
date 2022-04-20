@@ -18,7 +18,8 @@
           <label #added *ngFor="let numb of [].constructor(code.added.number); let i = index" class="secondary-input">
             <span>{{ code.added.names && code.added.names[i] ? code.added.names[i] : 'Input ' + (i + 1) }}:</span>
             <input
-              type="text"
+              [type]="code.added.typeInputs && code.added.typeInputs[i] ? code.added.typeInputs[i] : 'text'"
+              min="0"
               [placeholder]="code.added.names && code.added.names[i] ? code.added.names[i] : 'Write something'"
             />
           </label>

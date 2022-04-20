@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { AddedComponentVDLabelT } from '../types';
+import { AddedComponentVDLabelT, AddedInputT } from '../types';
 
 interface DataLink {
   name: string;
@@ -45,6 +45,7 @@ interface AddComponentVD {
   label: AddedComponentVDLabelT;
   number?: number;
   names?: string[];
+  typeInputs?: AddedInputT[];
   event?: string;
 }
 
