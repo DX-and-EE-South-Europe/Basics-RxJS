@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { VisualDemo } from 'src/app/common/interfaces';
+import { VisualDemo } from 'src/app/common/interfaces/interfaces';
 
 @Component({
   selector: 'app-parent-visual-demo',

@@ -1,4 +1,4 @@
-import { ComplexNav } from '../interfaces';
+import { ComplexNav } from '../interfaces/interfaces';
 
 export const navOperator: ComplexNav = {
   name: 'Operators',

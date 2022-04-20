@@ -1,4 +1,4 @@
-import { DataPage } from '../../../interfaces';
+import { DataPage } from '../../../interfaces/interfaces';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 

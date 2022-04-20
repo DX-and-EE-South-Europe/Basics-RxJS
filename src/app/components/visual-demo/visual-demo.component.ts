@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { concat, fromEvent, Observable, Observer, of, Subscription } from 'rxjs';
 import { first, map, tap } from 'rxjs/operators';
-import { VisualDemo } from 'src/app/common/interfaces';
+import { VisualDemo } from 'src/app/common/interfaces/interfaces';
 import { JsonServerService } from 'src/app/services/json-server.service';
 
 @Component({

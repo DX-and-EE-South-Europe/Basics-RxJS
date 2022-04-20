@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataLink } from './common/interfaces';
+import { DataLink } from './common/interfaces/interfaces';
 
 @Component({
   selector: 'app-root',

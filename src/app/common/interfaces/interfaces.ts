@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { AddedComponentVDLabelT } from './types';
+import { AddedComponentVDLabelT } from '../types';
 
 interface DataLink {
   name: string;
@@ -26,10 +26,12 @@ interface SubComplexNav {
 }
 
 interface VisualDemo {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   codeToExecute: (o?: any) => Observable<unknown>;
   codeString: string;
   added: AddComponentVD;
   wait?: boolean;
+  needJsonServer?: boolean;
 }
 
 interface DataPage {

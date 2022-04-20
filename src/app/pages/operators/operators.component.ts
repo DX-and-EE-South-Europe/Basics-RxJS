@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { navOperator } from 'src/app/common/const/nav-operator';
-import { BaseNav, ComplexNav } from 'src/app/common/interfaces';
+import { BaseNav, ComplexNav } from 'src/app/common/interfaces/interfaces';
 
 @Component({
   selector: 'app-operators',

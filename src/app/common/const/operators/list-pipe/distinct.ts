@@ -1,4 +1,4 @@
-import { DataPage } from '../../../interfaces';
+import { DataPage } from '../../../interfaces/interfaces';
 import { from } from 'rxjs';
 import { distinct } from 'rxjs/operators';
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DataLink } from 'src/app/common/interfaces';
+import { DataLink } from 'src/app/common/interfaces/interfaces';
 
 @Component({
   selector: 'app-link',

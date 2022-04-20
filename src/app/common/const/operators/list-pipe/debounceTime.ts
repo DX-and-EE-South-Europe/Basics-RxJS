@@ -1,4 +1,4 @@
-import { DataPage } from '../../../interfaces';
+import { DataPage } from '../../../interfaces/interfaces';
 import { debounceTime, map } from 'rxjs/operators';
 
 const debounceTimeOperator: DataPage = {

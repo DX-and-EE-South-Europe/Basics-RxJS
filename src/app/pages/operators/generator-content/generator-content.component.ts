@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { DataPage } from 'src/app/common/interfaces';
+import { DataPage } from 'src/app/common/interfaces/interfaces';
 import { catchUrlRouter } from 'src/app/common/utils/customPipes';
 import { exportDataPage } from 'src/app/common/utils/selectDataPage';
 

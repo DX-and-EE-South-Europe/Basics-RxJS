@@ -1,5 +1,5 @@
 import { operatorsPages } from '../const/operators';
-import { DataPage } from '../interfaces';
+import { DataPage } from '../interfaces/interfaces';
 
 const selectFileDataPage = (path: string[]): boolean | DataPage[] => {
   let objPage!: DataPage[];

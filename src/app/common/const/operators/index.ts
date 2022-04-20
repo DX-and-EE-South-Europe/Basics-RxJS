@@ -1,4 +1,4 @@
-import { DataPage } from 'src/app/common/interfaces';
+import { DataPage } from 'src/app/common/interfaces/interfaces';
 import { mapOperator } from './list-pipe/map';
 import { filterOperator } from './list-pipe/filter';
 import { tapOperator } from './list-pipe/tap';

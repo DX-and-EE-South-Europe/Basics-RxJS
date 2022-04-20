@@ -1,4 +1,4 @@
-import { DataPage } from '../../../interfaces';
+import { DataPage } from '../../../interfaces/interfaces';
 import { of } from 'rxjs';
 
 const ofOperator: DataPage = {

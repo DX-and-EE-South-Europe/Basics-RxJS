@@ -1,4 +1,4 @@
-import { DataPage } from '../../../interfaces';
+import { DataPage } from '../../../interfaces/interfaces';
 import { interval } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 
