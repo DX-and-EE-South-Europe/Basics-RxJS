@@ -2,7 +2,7 @@
   [ngClass]="[
     'visual-demo-container',
     code.added.label !== 'none' ? 'added' : '',
-    code.added.number && code.added.label === 'input' && code.added.number > 1 ? 'manyInputsAdded' : ''
+    code.added.number && code.added.label === 'input' && code.added.number > 1 ? 'AddInputs' + code.added.number : ''
   ]"
   #addCode
 >
@@ -16,7 +16,7 @@
         </ng-template>
         <ng-template [ngSwitchCase]="'input'">
           <label #added *ngFor="let numb of [].constructor(code.added.number); let i = index" class="secondary-input">
-            <span>Input {{ i + 1 }}:</span>
+            <span>{{ code.added.names && code.added.names[i] ? code.added.names[i] : 'Input ' + (i + 1) }}:</span>
             <input
               type="text"
               [placeholder]="code.added.names && code.added.names[i] ? code.added.names[i] : 'Write something'"

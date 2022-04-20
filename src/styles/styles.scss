@@ -101,6 +101,7 @@ button {
 
 input {
   border: 0.1rem solid v.$color-bg-light;
+  height: min-content;
   margin: 0 0 0 0.5rem;
   outline: 0;
   &:focus {

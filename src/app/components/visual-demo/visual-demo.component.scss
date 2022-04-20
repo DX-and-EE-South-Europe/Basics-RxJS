@@ -26,8 +26,11 @@ $color-stop: #e4d1d6;
       'demo-code . demo-console'
       'demo-code . button-restart';
     grid-template-rows: 2.5rem 1fr 2rem;
-    &.manyInputsAdded {
-      grid-template-rows: 2.5rem 1fr 2rem;
+    &.AddInputs2 {
+      grid-template-rows: 4rem 1fr 2rem;
+    }
+    &.AddInputs3 {
+      grid-template-rows: 5.8rem 1fr 2rem;
     }
   }
   .added-element {
@@ -41,10 +44,17 @@ $color-stop: #e4d1d6;
     .secondary-input {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-start;
+      justify-content: flex-end;
       margin: 0 0.5rem;
+      width: 100%;
       span {
+        display: flex;
+        grid-column: 1;
+        justify-content: flex-end;
         line-height: 1.8rem;
+      }
+      input {
+        grid-column: 2;
       }
     }
   }
@@ -94,10 +104,18 @@ $color-stop: #e4d1d6;
     grid-template-rows: 1fr auto 2rem;
 
     .added-element {
+      align-self: center;
       justify-content: center;
+      margin-bottom: 0;
       .secondary-button {
         background-color: white;
         border: 0.2rem solid v.$color-bg-light;
+      }
+      .secondary-input {
+        justify-content: center;
+        span {
+          display: block;
+        }
       }
     }
 
@@ -108,8 +126,17 @@ $color-stop: #e4d1d6;
         'demo-console '
         'button-restart';
       grid-template-rows: 1fr 2.5rem auto 2rem;
-      &.manyInputsAdded {
-        grid-template-rows: 1fr 2.5rem auto 2rem;
+      &.AddInputs2 {
+        grid-template-rows: 1fr 3.5rem auto 2rem;
+        span {
+          width: 4rem;
+        }
+      }
+      &.AddInputs3 {
+        grid-template-rows: 1fr 4.8rem auto 2rem;
+        span {
+          width: 4rem;
+        }
       }
     }
 
@@ -126,25 +153,6 @@ $color-stop: #e4d1d6;
         height: 15rem;
         margin-bottom: v.$margin-general;
         overflow-y: auto;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 1385px) and (min-width: 951px) {
-  .visual-demo-container {
-    &.added {
-      &.manyInputsAdded {
-        grid-template-rows: 4rem 1fr 2rem;
-      }
-    }
-  }
-}
-@media only screen and (max-width: 800px) {
-  .visual-demo-container {
-    &.added {
-      &.manyInputsAdded {
-        grid-template-rows: 1fr 4rem auto 2rem;
       }
     }
   }
