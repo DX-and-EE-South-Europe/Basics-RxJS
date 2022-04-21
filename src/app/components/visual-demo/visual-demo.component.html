@@ -11,17 +11,27 @@
     <ng-container [ngSwitch]="code.added.label">
       <div class="added-element">
         <ng-template [ngSwitchCase]="'button'">
-          <button #added *ngFor="let numb of [].constructor(code.added.number); let i = index" class="secondary-button">
+          <button
+            #added
+            *ngFor="let numb of [].constructor(code.added.number); let i = index"
+            class="secondary-button"
+            [disabled]="code.wait || runFinish"
+          >
             {{ code.added.names && code.added.names[i] ? code.added.names[i] : 'Button' }}
           </button>
         </ng-template>
         <ng-template [ngSwitchCase]="'input'">
-          <label #added *ngFor="let numb of [].constructor(code.added.number); let i = index" class="secondary-input">
+          <label
+            #added
+            *ngFor="let numb of [].constructor(code.added.number); let i = index"
+            class="secondary-input label-{{ code.wait || runFinish ? 'disabled' : 'enable' }}"
+          >
             <span>{{ code.added.names && code.added.names[i] ? code.added.names[i] : 'Input ' + (i + 1) }}:</span>
             <input
               [type]="code.added.typeInputs && code.added.typeInputs[i] ? code.added.typeInputs[i] : 'text'"
               min="0"
               [placeholder]="code.added.names && code.added.names[i] ? code.added.names[i] : 'Write something'"
+              [disabled]="code.wait || runFinish"
             />
           </label>
         </ng-template>

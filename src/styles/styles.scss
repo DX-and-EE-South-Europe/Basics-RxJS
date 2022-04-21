@@ -99,6 +99,12 @@ button {
   }
 }
 
+label {
+  &.label-disabled {
+    color: v.$color-bg-Ultralight;
+  }
+}
+
 input {
   border: 0.1rem solid v.$color-bg-light;
   height: min-content;
@@ -107,6 +113,12 @@ input {
   &:focus {
     border-radius: 0.2rem;
     outline: 0.1rem solid v.$color-bg-light;
+  }
+  &:disabled {
+    border: 0.1rem solid v.$color-bg-Ultralight;
+    &::placeholder {
+      color: v.$color-bg-Ultralight;
+    }
   }
 }
 
