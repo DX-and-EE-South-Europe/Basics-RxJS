@@ -1,7 +1,11 @@
 @use '/src/styles/var.scss' as v;
 
-nav {
+:host {
   background-color: v.$color-bg-mid;
+  overflow-y: auto;
+}
+
+nav {
   color: v.$color-text-light;
   height: 100%;
   width: 100%;

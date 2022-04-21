@@ -6,7 +6,7 @@ export const navOperator: ComplexNav = {
   labels: [
     {
       name: 'Creation',
-      labels: ['of' /* , 'from', 'fromEvent' */],
+      labels: ['of' /*, 'from', 'fromEvent', 'interval', 'range', 'timer' */],
       isSimple: true
     },
     {
@@ -18,6 +18,11 @@ export const navOperator: ComplexNav = {
           isSimple: true,
           labels: ['map', 'filter', 'tap']
         },
+        /* {
+          name: 'Historic Data',
+          isSimple: true,
+          labels: ['reduce', 'scan']
+        }, */
         {
           name: 'Distinct',
           isSimple: true,
@@ -26,8 +31,13 @@ export const navOperator: ComplexNav = {
         {
           name: 'Time',
           isSimple: true,
-          labels: ['debounceTime']
+          labels: ['debounceTime' /* , 'throttleTime' */]
         }
+        /* {
+          name: 'Combination',
+          isSimple: true,
+          labels: ['startWith', 'zi']
+        } */
       ]
     }
   ]
