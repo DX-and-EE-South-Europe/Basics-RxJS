@@ -14,12 +14,11 @@ const mapOperator: DataPage = {
           map((val) => val * 3),
           take(20)
         ),
-      codeString: `interval(500)
-        .pipe(
-            map((val) => val * 3),
-            take(20)
-        )
-        .subscribe(console.log)`,
+      codeString:
+        'interval(500).pipe(' +
+        '\n\tmap((val) => val * 3),\t//transform emitted value to value*3' +
+        '\n\ttake(20)\t\t\t\t//take the first 20 values emitted' +
+        '\n).subscribe(console.log)',
       added: { label: 'none', names: [] }
     }
   ]

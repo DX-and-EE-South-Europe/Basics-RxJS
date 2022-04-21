@@ -14,12 +14,11 @@ const filterOperator: DataPage = {
           filter((val) => val % 2 === 0),
           take(5)
         ),
-      codeString: `interval(500)
-        .pipe(
-            filter((val) => val % 2 === 0),
-            take(5)
-        )
-        .subscribe(console.log)`,
+      codeString:
+        'interval(500).pipe(' +
+        '\n\tfilter((val) => val % 2 === 0),\t//return only odd number' +
+        '\n\ttake(5)\t\t\t\t\t\t//take the first 5 values emitted' +
+        '\n).subscribe(console.log)',
       added: { label: 'none', names: [] }
     }
   ]

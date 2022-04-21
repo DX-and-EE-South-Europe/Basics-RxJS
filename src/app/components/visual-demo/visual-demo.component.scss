@@ -157,7 +157,7 @@ h3 {
       padding: v.$padding-general;
       &.demo-code {
         grid-area: demo-code;
-        overflow-y: unset;
+        overflow-y: auto;
       }
       &.demo-console {
         grid-area: demo-console;

@@ -15,7 +15,7 @@ export class JsonServerService {
     return this._http.get<Post[]>(`${this._url}/posts`, {});
   }
 
-  getPost$(id: number): Observable<Post | Empty> {
+  getPost$(id: number | string): Observable<Post | Empty> {
     return this._http.get<Post>(`${this._url}/posts/${id}`, {});
   }
 
@@ -36,7 +36,7 @@ export class JsonServerService {
   }
 
   //PATCH
-  patchPost$(newPost: Post, id?: number): Observable<Post> {
+  patchPost$(newPost: Post, id?: number | string): Observable<Post> {
     const numberPost = id ? id : newPost.id;
     if (!numberPost) return throwError(() => new Error('You have to indicate id post'));
     return this._http.patch<Post>(`${this._url}/posts/${numberPost}`, newPost);
