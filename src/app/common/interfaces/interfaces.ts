@@ -27,6 +27,7 @@ interface SubComplexNav {
 
 interface VisualDemo {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  title?: string;
   codeToExecute: (o?: any) => Observable<unknown>;
   codeString: string;
   added: AddComponentVD;

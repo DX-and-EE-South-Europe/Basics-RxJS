@@ -9,6 +9,14 @@ $color-stop: #e4d1d6;
   width: 100%;
 }
 
+h3 {
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 300;
+  justify-content: flex-start;
+  padding-top: 0;
+}
+
 .visual-demo-container {
   display: grid;
   grid-template-areas:
@@ -94,6 +102,9 @@ $color-stop: #e4d1d6;
 }
 
 @media only screen and (max-width: 950px) {
+  h3 {
+    justify-content: center;
+  }
   .visual-demo-container {
     grid-gap: 0.5rem;
     grid-template-areas:
