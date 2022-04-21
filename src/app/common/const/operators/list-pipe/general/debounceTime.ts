@@ -1,5 +1,5 @@
-import { DataPage } from '../../../interfaces/interfaces';
-import { debounceTime, filter, map, mergeAll } from 'rxjs/operators';
+import { DataPage } from 'src/app/common/interfaces/interfaces';
+import { debounceTime, filter, map, mergeAll, tap } from 'rxjs/operators';
 
 const debounceTimeOperator: DataPage = {
   name: 'debounceTime',
@@ -7,7 +7,7 @@ const debounceTimeOperator: DataPage = {
   imgUrl: 'of',
   demo: [
     {
-      title: 'Simple example',
+      title: 'Simple examples',
       codeToExecute: ({ obs }) =>
         obs[0].pipe(
           debounceTime(600),
@@ -22,23 +22,18 @@ const debounceTimeOperator: DataPage = {
       added: { label: 'input', number: 1 }
     },
     {
-      title: 'With http call',
       codeToExecute: ({ obs, jss }) =>
         obs[0].pipe(
-          debounceTime(500),
-          filter(({ target }) => !!target.value),
-          map(({ target }) => jss.getPost$(target.value)),
-          mergeAll()
+          debounceTime(600),
+          map(() => new Date().toLocaleString())
         ),
       codeString:
         'const input$ = fromEvent(input, "change")' +
         '\n\ninput$.pipe(' +
-        '\n\tdebounceTime(500)\t\t\t\t\t\t//emits only after 500ms without another emission' +
-        '\n\tfilter(({ target }) => !!target.value)\t\t\t//not return empty values' +
-        '\n\tmap(({ target }) => jss.getPost$(target.value))\t//return new observable (get http)' +
-        '\n\tmergeAll()\t\t\t\t\t\t\t\t//susbcribe to new emitted observable' +
+        '\n\tdebounceTime(600)\t\t\t\t\t\t//emits only after 500ms without another emission' +
+        '\n\tmap(() => new Date().toLocaleString())\t\t//return datetime of last click emitted' +
         '\n).subscribe(console.log);',
-      added: { label: 'input', number: 1, names: ['id'], typeInputs: ['number'] },
+      added: { label: 'button', number: 1 },
       needJsonServer: true
     }
   ]

@@ -16,27 +16,32 @@ export const navOperator: ComplexNav = {
         {
           name: 'General',
           isSimple: true,
-          labels: ['map', 'filter', 'tap']
+          labels: [
+            'map',
+            'filter',
+            'tap',
+            /* 'reduce',
+            'scan',
+            'take',
+            'takeWhile',
+            'takeUntil', */
+            'distinct',
+            'distinctUntilChanged',
+            'debounceTime'
+            /* 'throttleTime',
+            'startWith',
+            'zip' */
+          ]
         },
-        /* {
-          name: 'Historic Data',
-          isSimple: true,
-          labels: ['reduce', 'scan']
-        }, */
         {
-          name: 'Distinct',
+          name: 'High-Order Observables',
           isSimple: true,
-          labels: ['distinct', 'distinctUntilChanged']
-        },
-        {
-          name: 'Time',
-          isSimple: true,
-          labels: ['debounceTime' /* , 'throttleTime' */]
+          labels: [/* 'mergeAll', 'concatMap', */ 'mergeMap' /* , 'switchMap', 'exhaustMap' */]
         }
         /* {
-          name: 'Combination',
+          name: 'Error Handling',
           isSimple: true,
-          labels: ['startWith', 'zi']
+          labels: ['catchError']
         } */
       ]
     }
