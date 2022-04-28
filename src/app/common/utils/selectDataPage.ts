@@ -1,4 +1,5 @@
-import { operatorsPages } from '../const/operators';
+import { functionsPages } from '../const/functions/functions';
+import { operatorsPages } from '../const/operators/operators';
 import { DataPage } from '../interfaces/interfaces';
 
 const selectFileDataPage = (path: string[]): boolean | DataPage[] => {
@@ -9,6 +10,9 @@ const selectFileDataPage = (path: string[]): boolean | DataPage[] => {
       return false;
     case 'operators':
       objPage = operatorsPages;
+      break;
+    case 'functions':
+      objPage = functionsPages;
       break;
     default:
       console.error(`URL ERROR: no coincidences with ${path[0]}`);
