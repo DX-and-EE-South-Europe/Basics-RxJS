@@ -1,5 +1,5 @@
 import { DataPage } from 'src/app/common/interfaces/interfaces';
-import { debounceTime, filter, map, mergeAll, tap } from 'rxjs/operators';
+import { debounceTime, map } from 'rxjs/operators';
 
 const debounceTimeOperator: DataPage = {
   name: 'debounceTime',
@@ -22,7 +22,7 @@ const debounceTimeOperator: DataPage = {
       added: { label: 'input', number: 1 }
     },
     {
-      codeToExecute: ({ obs, jss }) =>
+      codeToExecute: ({ obs }) =>
         obs[0].pipe(
           debounceTime(600),
           map(() => new Date().toLocaleString())
@@ -34,7 +34,7 @@ const debounceTimeOperator: DataPage = {
         '\n\tmap(() => new Date().toLocaleString())\t\t//return datetime of last click emitted' +
         '\n).subscribe(console.log);',
       added: { label: 'button', number: 1 },
-      needJsonServer: true
+      needJsonServer: false
     }
   ]
 };
