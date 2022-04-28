@@ -28,21 +28,23 @@ export class DynamicNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.complexLabel = this.navLabels.labels.map((level1: any) => {
-      if (typeof level1.labels[0] === 'string') {
-        return [
-          level1.labels.some((labelName: any) => labelName.toLowerCase() === this.selectedLabel)
-            ? true
-            : false
-        ];
-      }
+    if (!this.navLabels.isSimple) {
+      this.complexLabel = this.navLabels.labels.map((level1: any) => {
+        if (typeof level1.labels[0] === 'string') {
+          return [
+            level1.labels.some((labelName: any) => labelName.toLowerCase() === this.selectedLabel)
+              ? true
+              : false
+          ];
+        }
 
-      const findArray: boolean[] = level1.labels.map((labelName: any) =>
-        labelName.labels.some(
-          (subLabelName: any) => subLabelName.toLowerCase() === this.selectedLabel
-        )
-      );
-      return [findArray.some((x: boolean) => !!x), findArray];
-    });
+        const findArray: boolean[] = level1.labels.map((labelName: any) =>
+          labelName.labels.some(
+            (subLabelName: any) => subLabelName.toLowerCase() === this.selectedLabel
+          )
+        );
+        return [findArray.some((x: boolean) => !!x), findArray];
+      });
+    }
   }
 }
