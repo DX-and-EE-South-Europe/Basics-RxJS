@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OperatorsComponent } from './operators.component';
+import { BasePageSectionComponent } from './base-page-section.component';
 
-describe('OperatorsComponent', () => {
-  let component: OperatorsComponent;
-  let fixture: ComponentFixture<OperatorsComponent>;
+describe('BasePageSectionComponent', () => {
+  let component: BasePageSectionComponent;
+  let fixture: ComponentFixture<BasePageSectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OperatorsComponent]
+      declarations: [BasePageSectionComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OperatorsComponent);
+    fixture = TestBed.createComponent(BasePageSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

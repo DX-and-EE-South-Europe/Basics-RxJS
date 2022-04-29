@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GeneratorContentComponent } from './generator-content.component';
 
-describe('GeneratorContentComponent', () => {
-  let component: GeneratorContentComponent;
-  let fixture: ComponentFixture<GeneratorContentComponent>;
+import { HomeFunctionsComponent } from './home-functions.component';
+
+describe('HomeFunctionsComponent', () => {
+  let component: HomeFunctionsComponent;
+  let fixture: ComponentFixture<HomeFunctionsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GeneratorContentComponent]
+      declarations: [HomeFunctionsComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GeneratorContentComponent);
+    fixture = TestBed.createComponent(HomeFunctionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

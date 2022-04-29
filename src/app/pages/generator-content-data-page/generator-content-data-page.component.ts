@@ -6,11 +6,11 @@ import { catchUrlRouter } from 'src/app/common/utils/customPipes';
 import { exportDataPage } from 'src/app/common/utils/selectDataPage';
 
 @Component({
-  selector: 'app-generator-content',
-  templateUrl: './generator-content.component.html',
-  styleUrls: ['./generator-content.component.scss']
+  selector: 'app-generator-content-data-page',
+  templateUrl: './generator-content-data-page.component.html',
+  styleUrls: ['./generator-content-data-page.component.scss']
 })
-export class GeneratorContentComponent implements OnDestroy {
+export class GeneratorContentDataPageComponent implements OnDestroy {
   dataPage!: DataPage;
   subscriptionRouter!: Subscription;
 
