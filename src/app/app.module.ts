@@ -13,6 +13,8 @@ import { ParentVisualDemoComponent } from './components/parent-visual-demo/paren
 import { JsonServerService } from './services/json-server.service';
 import { BasePageSectionComponent } from './pages/base-page-section/base-page-section.component';
 import { HomeFunctionsComponent } from './pages/functions/home-functions/home-functions.component';
+import { HomeAnatomyObsComponent } from './pages/anatomy-observables/home-anatomy-obs/home-anatomy-obs.component';
+import { HomeMulticastedObsComponent } from './pages/multicasted-obs/home-multicasted-obs/home-multicasted-obs.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HomeFunctionsComponent } from './pages/functions/home-functions/home-fu
     GeneratorContentDataPageComponent,
     ParentVisualDemoComponent,
     BasePageSectionComponent,
-    HomeFunctionsComponent
+    HomeFunctionsComponent,
+    HomeAnatomyObsComponent,
+    HomeMulticastedObsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [JsonServerService],

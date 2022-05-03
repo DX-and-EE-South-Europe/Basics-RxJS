@@ -8,11 +8,25 @@ import { navOperators } from 'src/app/common/const/operators/nav-operators';
 import { BasePageSectionComponent } from './pages/base-page-section/base-page-section.component';
 import { navFunctions } from './common/const/functions/nav-functions';
 import { HomeFunctionsComponent } from './pages/functions/home-functions/home-functions.component';
+import { navAnatomy } from './common/const/anatomy-obs/nav-anatomy';
+import { navMulticasted } from './common/const/multicasted-obs.ts/nav-multicasted';
+import { HomeMulticastedObsComponent } from './pages/multicasted-obs/home-multicasted-obs/home-multicasted-obs.component';
+import { HomeAnatomyObsComponent } from './pages/anatomy-observables/home-anatomy-obs/home-anatomy-obs.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  /* { path: 'anatomy-observables', component: undefined },
-  { path: 'multicasted-observables', component: undefined },*/
+  {
+    path: 'anatomy-observables',
+    component: BasePageSectionComponent,
+    data: { navData: navAnatomy },
+    children: [{ path: '', component: HomeAnatomyObsComponent }]
+  },
+  {
+    path: 'multicasted-observables',
+    component: BasePageSectionComponent,
+    data: { navData: navMulticasted },
+    children: [{ path: '', component: HomeMulticastedObsComponent }]
+  },
   {
     path: 'operators',
     component: BasePageSectionComponent,

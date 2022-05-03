@@ -8,9 +8,10 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   listSectionsNames: string[] = [
     'Anatomy Observables',
+    'Multicasted Observables',
     'Operators',
-    'Functions',
-    'Marble Testing',
-    'Practical Examples'
+    'Functions'
+    /* 'Marble Testing',
+    'Practical Examples' */
   ];
 }
