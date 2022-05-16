@@ -26,8 +26,8 @@ interface SubComplexNav {
 }
 
 interface VisualDemo {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   title?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   codeToExecute: (o?: any) => Observable<unknown>;
   codeString: string;
   added: AddComponentVD;
@@ -37,8 +37,8 @@ interface VisualDemo {
 
 interface DataPage {
   name: string;
-  description: string;
-  imgUrl: string;
+  description?: string;
+  imgUrl?: string;
   demo: VisualDemo[];
 }
 

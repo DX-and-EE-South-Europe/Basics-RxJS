@@ -15,6 +15,8 @@ import { BasePageSectionComponent } from './pages/base-page-section/base-page-se
 import { HomeFunctionsComponent } from './pages/functions/home-functions/home-functions.component';
 import { HomeAnatomyObsComponent } from './pages/anatomy-observables/home-anatomy-obs/home-anatomy-obs.component';
 import { HomeMulticastedObsComponent } from './pages/multicasted-obs/home-multicasted-obs/home-multicasted-obs.component';
+import { TemplatesAnatomyComponent } from './pages/anatomy-observables/templates-anatomy/templates-anatomy.component';
+import { TemplateMulticastedComponent } from './pages/multicasted-obs/template-multicasted/template-multicasted.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { HomeMulticastedObsComponent } from './pages/multicasted-obs/home-multic
     BasePageSectionComponent,
     HomeFunctionsComponent,
     HomeAnatomyObsComponent,
-    HomeMulticastedObsComponent
+    HomeMulticastedObsComponent,
+    TemplatesAnatomyComponent,
+    TemplateMulticastedComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [JsonServerService],

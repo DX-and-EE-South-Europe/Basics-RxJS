@@ -18,14 +18,29 @@ const routes: Routes = [
   {
     path: 'anatomy-observables',
     component: BasePageSectionComponent,
+    canActivateChild: [SubpageGuard],
     data: { navData: navAnatomy },
-    children: [{ path: '', component: HomeAnatomyObsComponent }]
+    children: [
+      { path: '', component: HomeAnatomyObsComponent },
+      {
+        path: ':anatomyPage',
+        component: GeneratorContentDataPageComponent
+      },
+      { path: '**', redirectTo: '' }
+    ]
   },
   {
     path: 'multicasted-observables',
     component: BasePageSectionComponent,
     data: { navData: navMulticasted },
-    children: [{ path: '', component: HomeMulticastedObsComponent }]
+    children: [
+      { path: '', component: HomeMulticastedObsComponent },
+      {
+        path: ':multicastedPage',
+        component: GeneratorContentDataPageComponent
+      },
+      { path: '**', redirectTo: '' }
+    ]
   },
   {
     path: 'operators',

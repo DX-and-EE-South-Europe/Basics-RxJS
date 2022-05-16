@@ -1,4 +1,6 @@
+import { anatomyPage } from '../const/anatomy-obs/anatomy';
 import { functionsPages } from '../const/functions/functions';
+import { multicastedPage } from '../const/multicasted-obs.ts/multicasted';
 import { operatorsPages } from '../const/operators/operators';
 import { DataPage } from '../interfaces/interfaces';
 
@@ -14,6 +16,12 @@ const selectFileDataPage = (path: string[]): boolean | DataPage[] => {
     case 'functions':
       objPage = functionsPages;
       break;
+    case 'anatomy-observables':
+      objPage = anatomyPage;
+      break;
+    case 'multicasted-observables':
+      objPage = multicastedPage;
+      break;
     default:
       console.error(`URL ERROR: no coincidences with ${path[0]}`);
   }
@@ -26,6 +34,7 @@ const matchUrl = (url: string): string[] => {
 };
 
 const replacePath = (path: string): string => path.replace(/-/gm, '');
+const replaceNamePage = (str: string): string => str.replace(/\s/gm, '').toLowerCase();
 
 export const existDataPage = (url: string): boolean => {
   const path = matchUrl(url);
@@ -33,15 +42,15 @@ export const existDataPage = (url: string): boolean => {
 
   return typeof objPage === 'boolean'
     ? objPage
-    : objPage.some(({ name }) => name.toLowerCase() === replacePath(path[1]));
+    : objPage.some(({ name }) => replaceNamePage(name) === replacePath(path[1]));
 };
 
-export const exportDataPage = (url: string): DataPage | null => {
+const exportDataPage = (url: string): DataPage | null => {
   const path = matchUrl(url);
   const objPage: DataPage[] | boolean = selectFileDataPage(path);
   if (typeof objPage === 'object') {
     const dataPage = objPage.find(
-      ({ name }) => name.toLowerCase() === replacePath(path[1])
+      ({ name }) => replaceNamePage(name) === replacePath(path[1])
     ) as DataPage;
     if (!dataPage) {
       console.error(
@@ -52,3 +61,5 @@ export const exportDataPage = (url: string): DataPage | null => {
   }
   return null;
 };
+
+export { exportDataPage, matchUrl };

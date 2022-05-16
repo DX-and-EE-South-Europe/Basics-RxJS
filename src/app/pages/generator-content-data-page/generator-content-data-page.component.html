@@ -1,8 +1,15 @@
 <ng-container *ngIf="dataPage">
-  <h1>{{ dataPage.name }}</h1>
-  <section class="section-concept">
-    <p class="concept-definition">{{ dataPage.description }}</p>
-    <img class="concept-img" src="assets/img/diagrams/{{ dataPage.imgUrl }}.PNG" />
+  <h1 class="dataPage-heading">{{ dataPage.name }}</h1>
+  <section class="section-concept" [ngSwitch]="url[0]">
+    <app-templates-anatomy [templateName]="url[1]" *ngSwitchCase="'anatomy-observables'"></app-templates-anatomy>
+    <app-template-multicasted
+      [templateName]="url[1]"
+      *ngSwitchCase="'multicasted-observables'"
+    ></app-template-multicasted>
+    <ng-template [ngSwitchDefault]>
+      <p *ngIf="dataPage.description" class="concept-definition">{{ dataPage.description }}</p>
+      <img *ngIf="dataPage.imgUrl" class="concept-img" src="assets/img/diagrams/{{ dataPage.imgUrl }}.PNG" />
+    </ng-template>
   </section>
   <section class="section-demo">
     <app-parent-visual-demo [dataDemos]="dataPage.demo"></app-parent-visual-demo>
