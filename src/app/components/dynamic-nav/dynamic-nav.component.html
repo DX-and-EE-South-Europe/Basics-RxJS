@@ -1,0 +1,38 @@
+<nav>
+  <div class="nav-head">
+    <a [routerLink]="['/home']"><span class="material-icons">arrow_back</span></a>
+    <app-link
+      class="nav-head-name"
+      [dataLink]="{ name: navLabels.name, isRelativeRoute: false }"
+      [addClass]="'link-header'"
+    ></app-link>
+    <!-- <h1 >{{ navLabels.name }}</h1> -->
+  </div>
+  <ng-container *ngIf="!navLabels.isSimple; else simpleNav">
+    <div *ngFor="let level1 of navLabels.labels; let i = index" class="nav-section">
+      <details [open]="complexLabel[i][0]">
+        <summary class="nav-section-name1">{{ level1.name }}</summary>
+        <ng-container *ngIf="level1.isSimple; else complex">
+          <ng-container *ngTemplateOutlet="navLabel; context: { $implicit: level1.labels }"></ng-container>
+        </ng-container>
+        <ng-template #complex>
+          <div *ngFor="let level2 of level1.labels; let i2 = index" class="nav-section-2">
+            <details [open]="complexLabel[i][1][i2]">
+              <summary class="nav-section-name2">{{ level2.name }}</summary>
+              <ng-container *ngTemplateOutlet="navLabel; context: { $implicit: level2.labels }"></ng-container>
+            </details>
+          </div>
+        </ng-template>
+      </details>
+    </div>
+  </ng-container>
+  <ng-template #simpleNav>
+    <ng-container *ngTemplateOutlet="navLabel; context: { $implicit: navLabels.labels }"></ng-container>
+  </ng-template>
+</nav>
+
+<ng-template #navLabel let-list let-isSelected>
+  <div *ngFor="let label of list" class="nav-label selected-{{ label.toLowerCase() === selectedLabel }}">
+    <app-link [dataLink]="{ name: label, isRelativeRoute: true }" [addClass]="'link-nav'"></app-link>
+  </div>
+</ng-template>

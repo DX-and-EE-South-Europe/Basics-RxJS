@@ -1,0 +1,28 @@
+@use '/src/styles/var.scss' as v;
+
+:host {
+  margin: 0 0 v.$spacer0-5 0;
+  width: 100%;
+}
+.demo-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 0;
+}
+.visual-demo {
+  margin: v.$spacer1-0 0;
+}
+
+:nth-child(2) {
+  margin: 0.25rem 0;
+}
+
+hr:last-child {
+  visibility: hidden;
+}
+
+@media only screen and (min-width: 950px) {
+  hr {
+    visibility: hidden;
+  }
+}

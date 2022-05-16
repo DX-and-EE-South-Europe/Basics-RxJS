@@ -1,0 +1,65 @@
+<h3 *ngIf="code.title">- {{ code.title }} -</h3>
+<div
+  [ngClass]="[
+    'visual-demo-container',
+    code.added.label !== 'none' ? 'added' : '',
+    code.added.number && code.added.label === 'input' && code.added.number > 1 ? 'AddInputs' + code.added.number : ''
+  ]"
+  #addCode
+>
+  <ng-template [ngIf]="code.added.label !== 'none'">
+    <ng-container [ngSwitch]="code.added.label">
+      <div class="added-element">
+        <ng-template [ngSwitchCase]="'button'">
+          <button
+            #added
+            *ngFor="let numb of [].constructor(code.added.number); let i = index"
+            class="secondary-button"
+            [disabled]="code.wait || runFinish"
+          >
+            {{ code.added.names && code.added.names[i] ? code.added.names[i] : 'Button' }}
+          </button>
+        </ng-template>
+        <ng-template [ngSwitchCase]="'input'">
+          <label
+            #added
+            *ngFor="let numb of [].constructor(code.added.number); let i = index"
+            class="secondary-input label-{{ code.wait || runFinish ? 'disabled' : 'enable' }}"
+          >
+            <span>{{ code.added.names && code.added.names[i] ? code.added.names[i] : 'Input ' + (i + 1) }}:</span>
+            <input
+              [type]="code.added.typeInputs && code.added.typeInputs[i] ? code.added.typeInputs[i] : 'text'"
+              min="0"
+              [placeholder]="code.added.names && code.added.names[i] ? code.added.names[i] : 'Write something'"
+              [disabled]="code.wait || runFinish"
+            />
+          </label>
+        </ng-template>
+      </div>
+    </ng-container>
+  </ng-template>
+  <div class="demo-code demo" #demoCode>
+    <code>
+      <pre>{{ code.codeString }}</pre>
+    </code>
+  </div>
+  <div
+    class="demo-console demo"
+    #demoConsole
+    [attr.wait]="code.wait ? code.wait : null"
+    [style.maxHeight.px]="
+      code.wait
+        ? demoCode.offsetHeight + addCode.offsetHeight - (code.added.label !== 'none' ? 8 : 40)
+        : this.demoConsole.offsetHeight
+    "
+  >
+    <p *ngIf="code.wait">Please click to run</p>
+    <samp>
+      <pre>{{ codeDemoConsole }}</pre>
+    </samp>
+  </div>
+  <div class="buttons">
+    <button class="button-restart" (click)="restart()" [disabled]="!runFinish">Restart</button>
+    <button class="button-stop" (click)="stop()" [disabled]="code.wait || runFinish">Stop</button>
+  </div>
+</div>

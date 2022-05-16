@@ -1,7 +1,7 @@
 @use '/src/styles/var.scss' as v;
 
 .home-header {
-  background-color: rgba($color: v.$color-bg-dark, $alpha: 1);
+  background-color: rgba($color: v.$color-bg-Ultradark, $alpha: 1);
   font-size: 1.2rem;
-  padding: v.$padding-general;
+  padding: v.$spacer0-5;
 }

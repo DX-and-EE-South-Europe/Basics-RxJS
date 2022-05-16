@@ -1,0 +1,13 @@
+@use '/src/styles/var.scss' as v;
+
+.page {
+  app-dynamic-nav {
+    grid-column-start: nav;
+  }
+
+  main {
+    grid-column-start: main;
+    overflow-y: auto;
+    padding: v.$spacer1-0;
+  }
+}

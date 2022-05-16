@@ -5,26 +5,27 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: v.$padding-content;
+  padding: v.$spacer1-5;
   .list-sections {
     display: flex;
     flex-wrap: wrap;
-    gap: v.$margin-elements;
+    gap: v.$spacer1-0;
     justify-content: center;
+    margin: v.$spacer1-5;
     width: 100%;
     .section-box {
-      background-color: v.$color-bg-light;
-      border: 0.1rem solid v.$color-text-dark;
+      background-color: v.$color-bg-mid;
       border-radius: 0.5rem;
       display: flex;
       flex-basis: 20%;
       font-size: 1.2rem;
       height: 3em;
       justify-content: center;
+      // max-width: 230px ;
       width: fit-content;
       z-index: 2;
       &:hover {
-        background-color: v.$color-bg-mid;
+        background-color: v.$color-bg-light;
       }
     }
   }

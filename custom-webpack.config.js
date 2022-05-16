@@ -9,7 +9,7 @@ module.exports = {
     }),
     new ESLintPlugin({
       extensions: ['ts', 'tsx'],
-      emitWarning: false,
+      emitWarning: true,
       emitError: false,
       failOnError: false,
       failOnWarning: false,

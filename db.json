@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "First Post",
+      "author": "X"
+    },
+    {
+      "id": 2,
+      "author": "authorApp",
+      "title": "Welcome to RXJS-APP"
+    },
+    {
+      "id": 3,
+      "author": "authorApp",
+      "title": "Enjoy it"
+    }
+  ],
+  "appInfo": {
+    "author": "Cristina Ribate",
+    "createdAt": "2022-03-07",
+    "lastModified": "2022-04-20T14:34:21.575Z"
+  }
+}
