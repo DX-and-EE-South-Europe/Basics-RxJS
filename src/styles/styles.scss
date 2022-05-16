@@ -41,6 +41,10 @@ body {
   }
   h1 {
     font-size: 3rem;
+    &.dataPage-heading {
+      font-size: 2rem;
+      grid-row: 1;
+    }
   }
   h2 {
     font-size: 2.5rem;
@@ -51,7 +55,7 @@ body {
   h4,
   h5,
   h6 {
-    padding: v.$padding-general 0;
+    padding: v.$spacer0-5 0;
   }
 }
 
@@ -60,7 +64,7 @@ body {
   display: grid;
   grid-column-start: 1;
   grid-row-start: router;
-  grid-template-columns: [nav] 14rem [main] 1fr;
+  grid-template-columns: [nav] 16rem [main] 1fr;
   height: 100%;
   width: 100%;
 }
@@ -75,7 +79,7 @@ button {
   color: v.$color-text-light;
   height: 100%;
   margin: 0 0.2rem;
-  padding: 0 v.$padding-elements;
+  padding: 0 v.$spacer1-0;
   width: fit-content;
   &:disabled {
     background-color: v.$color-bg-Ultralight;
@@ -125,5 +129,5 @@ input {
 hr {
   border: 0;
   border-top: 0.15rem dotted v.$color-bg-Ultralight;
-  margin-bottom: v.$margin-content;
+  margin-bottom: v.$spacer1-5;
 }

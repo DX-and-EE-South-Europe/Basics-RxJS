@@ -1,7 +1,7 @@
 @use '/src/styles/var.scss' as v;
 
 :host {
-  margin: 0 0 v.$margin-general 0;
+  margin: 0 0 v.$spacer0-5 0;
   width: 100%;
 }
 .demo-title {
@@ -10,7 +10,7 @@
   padding: 0;
 }
 .visual-demo {
-  margin: v.$margin-elements 0;
+  margin: v.$spacer1-0 0;
 }
 
 :nth-child(2) {

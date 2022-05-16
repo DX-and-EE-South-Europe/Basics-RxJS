@@ -22,7 +22,7 @@ h3 {
   grid-template-areas:
     'demo-code . demo-console'
     'demo-code . button-restart';
-  grid-template-columns: 1fr v.$margin-elements 1fr;
+  grid-template-columns: 1fr v.$spacer1-0 1fr;
   grid-template-rows: 1fr 2rem;
   height: 100%;
   min-height: 15rem;
@@ -47,7 +47,7 @@ h3 {
     flex-wrap: wrap;
     grid-area: added-element;
     justify-content: flex-end;
-    margin-bottom: v.$margin-general;
+    margin-bottom: v.$spacer0-5;
 
     .secondary-input {
       display: flex;
@@ -70,13 +70,13 @@ h3 {
   .demo {
     border: 0.3rem solid v.$color-bg-light;
     overflow-y: auto;
-    padding: v.$padding-general;
+    padding: v.$spacer0-5;
     &.demo-code {
       grid-area: demo-code;
     }
     &.demo-console {
       grid-area: demo-console;
-      margin-bottom: v.$margin-general;
+      margin-bottom: v.$spacer0-5;
     }
     &[wait] {
       align-items: center;
@@ -153,7 +153,7 @@ h3 {
     .demo {
       border: 0.3rem solid v.$color-bg-light;
       overflow-y: unset;
-      padding: v.$padding-general;
+      padding: v.$spacer0-5;
       &.demo-code {
         grid-area: demo-code;
         overflow-y: auto;
@@ -161,7 +161,7 @@ h3 {
       &.demo-console {
         grid-area: demo-console;
         height: 15rem;
-        margin-bottom: v.$margin-general;
+        margin-bottom: v.$spacer0-5;
         overflow-y: auto;
       }
     }

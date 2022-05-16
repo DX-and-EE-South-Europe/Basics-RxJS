@@ -8,7 +8,7 @@
 nav {
   color: v.$color-text-light;
   height: auto;
-  padding-bottom: v.$padding-content;
+  padding-bottom: v.$spacer1-5;
   width: 100%;
   .nav-head {
     align-items: center;
@@ -17,7 +17,7 @@ nav {
       background-color: v.$color-bg-mid;
       font-size: 1.3rem;
       font-weight: 500;
-      padding: v.$padding-general;
+      padding: v.$spacer0-5;
     }
     a {
       color: rgba($color: v.$color-text-light, $alpha: 1);
@@ -28,20 +28,20 @@ nav {
     .nav-section-name1 {
       font-size: 1.2rem;
       font-weight: 500;
-      padding: v.$padding-general calc(2 * v.$padding-general);
+      padding: v.$spacer0-5 calc(2 * v.$spacer0-5);
     }
     .nav-section-2 {
       .nav-section-name2 {
         font-size: 1.1rem;
         font-weight: 400;
-        padding: v.$padding-general calc(3 * v.$padding-general);
+        padding: v.$spacer0-5 calc(3 * v.$spacer0-5);
       }
     }
   }
 }
 .nav-label {
   border-top: 0.5px dotted v.$color-bg-Ultralight;
-  height: calc(2 * v.$padding-general + 1rem);
+  height: calc(2 * v.$spacer0-5 + 1rem);
   &.selected-true {
     background-color: v.$color-bg-dark;
   }

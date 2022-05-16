@@ -5,12 +5,13 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: v.$padding-content;
+  padding: v.$spacer1-5;
   .list-sections {
     display: flex;
     flex-wrap: wrap;
-    gap: v.$margin-elements;
+    gap: v.$spacer1-0;
     justify-content: center;
+    margin: v.$spacer1-5;
     width: 100%;
     .section-box {
       background-color: v.$color-bg-mid;
@@ -20,6 +21,7 @@ main {
       font-size: 1.2rem;
       height: 3em;
       justify-content: center;
+      // max-width: 230px ;
       width: fit-content;
       z-index: 2;
       &:hover {
