@@ -50,7 +50,7 @@ const forkJoinFunction: DataPage = {
     },
     {
       title: '2 events button',
-      codeToExecute: ({ jss, obs }) =>
+      codeToExecute: ({ obs }) =>
         forkJoin({
           butttonEvent1: obs[0].pipe(
             take(1),
