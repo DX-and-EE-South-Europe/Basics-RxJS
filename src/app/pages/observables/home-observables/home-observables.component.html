@@ -1,0 +1,33 @@
+<h1>{{ observables.title }}</h1>
+<p>Observables:</p>
+<ul>
+  <li>Are an information source.</li>
+  <li>Can emit zero, one or more values.</li>
+  <li>Are synchronous or asynchronous.</li>
+  <li>Are finites or infinites.</li>
+  <li>Use a push system.</li>
+</ul>
+<p>
+  To sum up, they are not Promises or EventEmitters. They are like a lazy functions that need to be called, do not share
+  side effects, emit zero, multiple or infinite values synchronously or asynchronously.
+</p>
+<p>They really usefull to manage UI events, notify changes objects, sockets comunication, work with streams...</p>
+<p>Some of their benefits are:</p>
+<div class="grid">
+  <ul class="list">
+    <li>Avoid callback hell (a callback inside another callback).</li>
+    <li>Easier and simplified work.</li>
+    <li>Easier to transform streams (operators).</li>
+    <li>Cleaner and easier to read.</li>
+    <li>Easier to implement and add procedures without changing the final product.</li>
+  </ul>
+</div>
+<p>
+  In this section, you will learn about the different types of values that an observable can emit, how to execute and
+  interact with them.
+</p>
+<p>
+  <span class="bold">Note:</span>
+  It is a convention to indicate when something is an Observable the '$' symbol should be added at the end of the name.
+  Also, you can put between <> the type of value that the observable emits.
+</p>

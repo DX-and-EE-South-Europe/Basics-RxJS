@@ -1,0 +1,24 @@
+<p>
+  Observables can be infinite or finite. When they are finite, it means that the observables complete and stop
+  execution. However, the infinite observables never complete, so it could be a waste of computation power or memory
+  resources when we no longer need them. For this reason, the unsubscribe method of the Subscription is used.
+</p>
+<p>
+  When you subscribe to an observable, it get a Subscription that represents the current execution of the observable and
+  its mainly used to cancel the execution. To cancel the execution, you must call the unsubscribe method from the
+  Subscription, it will execute the return of the observable.
+</p>
+<div class="center">
+  <code class="exampleCode">
+    <pre appHighlight class="language-javascript">{{ disposing.exampleInfiniteObservable }}</pre>
+    <div class="vertical-line"></div>
+    <pre appHighlight class="language-javascript">{{ disposing.exampleDisposing }}</pre>
+  </code>
+</div>
+<p>
+  <span class="bold">Note:</span>
+  Unsubscribing does not mean that the observable is completed. It means that you do not listen the emissions of the
+  Observable yet, but the observable still emitting values. Therefore, it is really important that when unsubscribing,
+  the complete method of the observable is called internally (in the return of the observable).
+</p>
+<p>This app calls the unsubscribe method when you click-on stop button of a demo example.</p>

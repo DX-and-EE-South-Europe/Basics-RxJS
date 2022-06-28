@@ -1,0 +1,6 @@
+<ng-container [ngSwitch]="templateName">
+  <app-creating-observable *ngSwitchCase="'creating-observable'"></app-creating-observable>
+  <app-subscribing *ngSwitchCase="'subscribing'"></app-subscribing>
+  <app-executing *ngSwitchCase="'executing'"></app-executing>
+  <app-disposing *ngSwitchCase="'disposing'"></app-disposing>
+</ng-container>

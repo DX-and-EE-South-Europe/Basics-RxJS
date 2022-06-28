@@ -1,17 +1,23 @@
 <ng-container *ngIf="dataPage">
   <h1 class="dataPage-heading">{{ dataPage.name }}</h1>
-  <section class="section-concept" [ngSwitch]="url[0]">
-    <app-templates-anatomy [templateName]="url[1]" *ngSwitchCase="'anatomy-observables'"></app-templates-anatomy>
+  <section
+    class="section-concept {{ ['observables', 'multicasted-observables'].includes(url[0]) ? '' : 'add-grid' }}"
+    [ngSwitch]="url[0]"
+  >
+    <app-templates-observables [templateName]="url[1]" *ngSwitchCase="'observables'"></app-templates-observables>
     <app-template-multicasted
       [templateName]="url[1]"
       *ngSwitchCase="'multicasted-observables'"
     ></app-template-multicasted>
     <ng-template [ngSwitchDefault]>
-      <p *ngIf="dataPage.description" class="concept-definition">{{ dataPage.description }}</p>
-      <img *ngIf="dataPage.imgUrl" class="concept-img" src="assets/img/diagrams/{{ dataPage.imgUrl }}.PNG" />
+      <div class="concept-definition">
+        <p *ngIf="dataPage.description" class="concept-definition-description">{{ dataPage.description }}</p>
+        <p *ngIf="dataPage.note" class="concept-definition-note">{{ dataPage.note }}</p>
+      </div>
+      <img *ngIf="dataPage.imgUrl" class="concept-img" src="assets/img/diagrams/{{ dataPage.imgUrl }}.svg" />
     </ng-template>
   </section>
-  <section class="section-demo">
+  <section *ngIf="!['executing'].includes(url[1])" class="section-demo">
     <app-parent-visual-demo [dataDemos]="dataPage.demo"></app-parent-visual-demo>
   </section>
 </ng-container>

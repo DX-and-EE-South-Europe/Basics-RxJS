@@ -15,10 +15,10 @@ const tapOperator: DataPage = {
         ),
       codeString:
         'interval(500).pipe(' +
-        '\n\ttake(3),\t\t\t\t//take the first 3 values emitted' +
+        '\n\ttake( 3 ),\t\t\t\t//emit first 3 values and complete' +
         '\n\ttap((val) => alert(val)),\t//alert side-effect' +
         '\n).subscribe(console.log)',
-      added: { label: 'none', names: [] }
+      added: { label: 'none' }
     }
   ]
 };

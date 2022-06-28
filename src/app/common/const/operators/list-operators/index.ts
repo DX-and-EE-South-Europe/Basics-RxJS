@@ -1,5 +1,7 @@
 import { DataPage } from 'src/app/common/interfaces/interfaces';
 import { fromOperator } from './list-create/from';
+import { fromEventOperator } from './list-create/fromEvent';
+import { intervalOperator } from './list-create/interval';
 import { ofOperator } from './list-create/of';
 import { catchErrorOperator } from './list-pipe/errorHandling/catchError';
 import { retryOperator } from './list-pipe/errorHandling/retry';
@@ -17,14 +19,15 @@ import { takeWhileOperator } from './list-pipe/general/takeWhile';
 import { tapOperator } from './list-pipe/general/tap';
 import { throttleTimeOperator } from './list-pipe/general/throttleTime';
 import { concatMapOperator } from './list-pipe/hoo/concatMap';
-import { exaushtMapOperator } from './list-pipe/hoo/exaushtMap';
+import { exhaustMapOperator } from './list-pipe/hoo/exhaustMap';
 import { mergeMapOperator } from './list-pipe/hoo/mergeMap';
 import { switchMapOperator } from './list-pipe/hoo/switchMap';
-import { shareReplayOperator } from './list-pipe/multicasting/shareReplay';
 
 const listOperators: DataPage[] = [
   ofOperator,
   fromOperator,
+  fromEventOperator,
+  intervalOperator,
   mapOperator,
   filterOperator,
   tapOperator,
@@ -41,9 +44,8 @@ const listOperators: DataPage[] = [
   concatMapOperator,
   mergeMapOperator,
   switchMapOperator,
-  exaushtMapOperator,
+  exhaustMapOperator,
   catchErrorOperator,
-  retryOperator,
-  shareReplayOperator
+  retryOperator
 ];
 export { listOperators };

@@ -38,14 +38,17 @@ interface VisualDemo {
 interface DataPage {
   name: string;
   description?: string;
+  note?: string;
   imgUrl?: string;
   demo: VisualDemo[];
 }
 
 interface AddComponentVD {
   label: AddedComponentVDLabelT;
-  number?: number;
-  names?: string[];
+  numberInputs?: number;
+  numberButtons?: number;
+  namesInputs?: string[];
+  namesButtons?: string[];
   typeInputs?: AddedInputT[];
   event?: string;
 }

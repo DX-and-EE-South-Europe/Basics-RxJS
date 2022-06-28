@@ -3,7 +3,10 @@
   [ngClass]="[
     'visual-demo-container',
     code.added.label !== 'none' ? 'added' : '',
-    code.added.number && code.added.label === 'input' && code.added.number > 1 ? 'AddInputs' + code.added.number : ''
+    (code.added.label === 'input' || code.added.label === 'mix') && code.added.numberInputs && code.added.numberButtons
+      ? 'AddInputs' +
+        (code.added.numberButtons > 0 ? code.added.numberInputs + code.added.numberButtons : code.added.numberInputs)
+      : ''
   ]"
   #addCode
 >
@@ -11,36 +14,21 @@
     <ng-container [ngSwitch]="code.added.label">
       <div class="added-element">
         <ng-template [ngSwitchCase]="'button'">
-          <button
-            #added
-            *ngFor="let numb of [].constructor(code.added.number); let i = index"
-            class="secondary-button"
-            [disabled]="code.wait || runFinish"
-          >
-            {{ code.added.names && code.added.names[i] ? code.added.names[i] : 'Button' }}
-          </button>
+          <ng-container *ngTemplateOutlet="AddButtonsTemplate"></ng-container>
         </ng-template>
         <ng-template [ngSwitchCase]="'input'">
-          <label
-            #added
-            *ngFor="let numb of [].constructor(code.added.number); let i = index"
-            class="secondary-input label-{{ code.wait || runFinish ? 'disabled' : 'enable' }}"
-          >
-            <span>{{ code.added.names && code.added.names[i] ? code.added.names[i] : 'Input ' + (i + 1) }}:</span>
-            <input
-              [type]="code.added.typeInputs && code.added.typeInputs[i] ? code.added.typeInputs[i] : 'text'"
-              min="0"
-              [placeholder]="code.added.names && code.added.names[i] ? code.added.names[i] : 'Write something'"
-              [disabled]="code.wait || runFinish"
-            />
-          </label>
+          <ng-container *ngTemplateOutlet="AddInputsTemplate"></ng-container>
+        </ng-template>
+        <ng-template [ngSwitchCase]="'mix'">
+          <ng-container *ngTemplateOutlet="AddInputsTemplate"></ng-container>
+          <ng-container *ngTemplateOutlet="AddButtonsTemplate"></ng-container>
         </ng-template>
       </div>
     </ng-container>
   </ng-template>
-  <div class="demo-code demo" #demoCode>
+  <div class="demo-code demo exampleCode" #demoCode>
     <code>
-      <pre>{{ code.codeString }}</pre>
+      <pre appHighlight class="language-javascript">{{ code.codeString }}</pre>
     </code>
   </div>
   <div
@@ -63,3 +51,40 @@
     <button class="button-stop" (click)="stop()" [disabled]="code.wait || runFinish">Stop</button>
   </div>
 </div>
+
+<ng-template #AddInputsTemplate>
+  <label
+    #added
+    *ngFor="let numb of [].constructor(code.added.numberInputs); let i = index"
+    class="secondary-input label-{{ code.wait || runFinish ? 'disabled' : 'enable' }}"
+  >
+    <span>
+      {{ code.added.namesInputs && code.added.namesInputs[i] ? code.added.namesInputs[i] : 'Input ' + (i + 1) }}:
+    </span>
+    <input
+      [type]="code.added.typeInputs && code.added.typeInputs[i] ? code.added.typeInputs[i] : 'text'"
+      min="0"
+      id="{{
+        code.added.namesInputs && code.added.namesInputs[i]
+          ? code.added.namesInputs[i].toLowerCase()
+          : 'input-' + (i + 1)
+      }}"
+      [placeholder]="
+        code.added.namesInputs && code.added.namesInputs[i] ? code.added.namesInputs[i] : 'Write something'
+      "
+      [disabled]="code.wait || runFinish"
+    />
+  </label>
+</ng-template>
+
+<ng-template #AddButtonsTemplate>
+  <button
+    #added
+    *ngFor="let numb of [].constructor(code.added.numberButtons); let i = index"
+    id="{{ code.added.namesButtons && code.added.namesButtons[i] ? code.added.namesButtons[i] : 'button-' + i }}"
+    class="secondary-button"
+    [disabled]="code.wait || runFinish"
+  >
+    {{ code.added.namesButtons && code.added.namesButtons[i] ? code.added.namesButtons[i] : 'Button' }}
+  </button>
+</ng-template>

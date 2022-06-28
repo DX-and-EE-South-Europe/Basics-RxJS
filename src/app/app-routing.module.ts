@@ -8,22 +8,22 @@ import { navOperators } from 'src/app/common/const/operators/nav-operators';
 import { BasePageSectionComponent } from './pages/base-page-section/base-page-section.component';
 import { navFunctions } from './common/const/functions/nav-functions';
 import { HomeFunctionsComponent } from './pages/functions/home-functions/home-functions.component';
-import { navAnatomy } from './common/const/anatomy-obs/nav-anatomy';
+import { navObservables } from './common/const/observables/nav-observables';
 import { navMulticasted } from './common/const/multicasted-obs.ts/nav-multicasted';
 import { HomeMulticastedObsComponent } from './pages/multicasted-obs/home-multicasted-obs/home-multicasted-obs.component';
-import { HomeAnatomyObsComponent } from './pages/anatomy-observables/home-anatomy-obs/home-anatomy-obs.component';
+import { HomeObservablesComponent } from './pages/observables/home-observables/home-observables.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   {
-    path: 'anatomy-observables',
+    path: 'observables',
     component: BasePageSectionComponent,
     canActivateChild: [SubpageGuard],
-    data: { navData: navAnatomy },
+    data: { navData: navObservables },
     children: [
-      { path: '', component: HomeAnatomyObsComponent },
+      { path: '', component: HomeObservablesComponent },
       {
-        path: ':anatomyPage',
+        path: ':observablePage',
         component: GeneratorContentDataPageComponent
       },
       { path: '**', redirectTo: '' }

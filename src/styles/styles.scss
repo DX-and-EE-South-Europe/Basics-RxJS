@@ -92,6 +92,7 @@ button {
     background-color: white;
     border: 0.2rem solid v.$color-bg-light;
     color: v.$color-text-dark;
+    height: inherit;
     &:not(:disabled):hover {
       background-color: v.$color-bg-light;
       color: v.$color-text-light;
@@ -130,4 +131,12 @@ hr {
   border: 0;
   border-top: 0.15rem dotted v.$color-bg-Ultralight;
   margin-bottom: v.$spacer1-5;
+}
+
+.exampleCode {
+  background-color: #303030;
+}
+
+.bold {
+  font-weight: 600;
 }

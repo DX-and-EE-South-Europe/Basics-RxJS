@@ -13,10 +13,15 @@ import { ParentVisualDemoComponent } from './components/parent-visual-demo/paren
 import { JsonServerService } from './services/json-server.service';
 import { BasePageSectionComponent } from './pages/base-page-section/base-page-section.component';
 import { HomeFunctionsComponent } from './pages/functions/home-functions/home-functions.component';
-import { HomeAnatomyObsComponent } from './pages/anatomy-observables/home-anatomy-obs/home-anatomy-obs.component';
+import { HomeObservablesComponent } from './pages/observables/home-observables/home-observables.component';
 import { HomeMulticastedObsComponent } from './pages/multicasted-obs/home-multicasted-obs/home-multicasted-obs.component';
-import { TemplatesAnatomyComponent } from './pages/anatomy-observables/templates-anatomy/templates-anatomy.component';
+import { TemplatesObservablesComponent } from './pages/observables/templates-observables/templates-observables.component';
 import { TemplateMulticastedComponent } from './pages/multicasted-obs/template-multicasted/template-multicasted.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { CreatingObservableComponent } from './pages/observables/sections/creating-observable/creating-observable.component';
+import { SubscribingComponent } from './pages/observables/sections/subscribing/subscribing.component';
+import { ExecutingComponent } from './pages/observables/sections/executing/executing.component';
+import { DisposingComponent } from './pages/observables/sections/disposing/disposing.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +35,15 @@ import { TemplateMulticastedComponent } from './pages/multicasted-obs/template-m
     ParentVisualDemoComponent,
     BasePageSectionComponent,
     HomeFunctionsComponent,
-    HomeAnatomyObsComponent,
+    HomeObservablesComponent,
     HomeMulticastedObsComponent,
-    TemplatesAnatomyComponent,
-    TemplateMulticastedComponent
+    TemplatesObservablesComponent,
+    TemplateMulticastedComponent,
+    HighlightDirective,
+    CreatingObservableComponent,
+    SubscribingComponent,
+    ExecutingComponent,
+    DisposingComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [JsonServerService],

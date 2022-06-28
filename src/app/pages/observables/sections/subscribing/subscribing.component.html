@@ -1,0 +1,16 @@
+<p>
+  Once you have an Observable, to start receiving the values emitted by the observable, you need to use the suscribe
+  method. It is the way to start the execution of the observable.
+</p>
+<code class="simple-code"><span>obs$.suscribe()</span></code>
+<p>
+  When you suscribe to an Observable and later you suscribe to it again, it may not emit the same values as the
+  previous. This is because they are independent.
+</p>
+<p>
+  If you want to receive the same emitted value, you need to multicast the original observable. There are some options:
+</p>
+<ul class="list">
+  <li>Multicasted Observables.</li>
+  <li>Some operators: Like share.</li>
+</ul>

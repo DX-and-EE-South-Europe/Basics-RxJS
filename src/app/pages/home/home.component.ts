@@ -6,12 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  listSectionsNames: string[] = [
-    'Anatomy Observables',
-    'Multicasted Observables',
-    'Operators',
-    'Functions'
-    /* 'Marble Testing',
-    'Practical Examples' */
-  ];
+  listSectionsNames: string[] = ['Observables', 'Operators', 'Functions'];
 }

@@ -30,7 +30,13 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
   private _code: VisualDemo = {
     codeToExecute: () => of(),
     codeString: '',
-    added: { label: 'none', names: [] },
+    added: {
+      label: 'none',
+      namesButtons: [],
+      namesInputs: [],
+      numberButtons: -1,
+      numberInputs: -1
+    },
     wait: true,
     needJsonServer: false
   };
@@ -55,7 +61,7 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
           : `status: ${error.status}\n\tstatusText: ${error.statusText}`;
       this.unsubscribeAll();
       this.initSubscription();
-      return this.concatDemoConsole(`Error:\n\t${textError}`);
+      return this.concatDemoConsole(`Error:\n\t${textError}\n\n---AUTO RESTART---\n`);
     },
     complete: () => {
       this.runFinish = true;
@@ -71,8 +77,29 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    if (this.code.added.label !== 'none' && !this.code.added.hasOwnProperty('number'))
-      this.code.added = { ...this.code.added, number: 1, names: [] };
+    switch (this.code.added.label) {
+      case 'button':
+        const bNumberButtons = this.code.added.hasOwnProperty('numberButtons')
+          ? this.code.added.numberButtons
+          : 1;
+        this.code.added = { ...this.code.added, numberButtons: bNumberButtons, numberInputs: -1 };
+        break;
+      case 'input':
+        const iNumberInputs = this.code.added.hasOwnProperty('numberInputs')
+          ? this.code.added.numberInputs
+          : 1;
+        this.code.added = { ...this.code.added, numberButtons: -1, numberInputs: iNumberInputs };
+        break;
+      case 'mix':
+        const mNumberButtons = this.code.added.numberButtons ?? -1;
+        const mNumberInputs = this.code.added.numberInputs ?? 0;
+        this.code.added = {
+          ...this.code.added,
+          numberInputs: mNumberInputs,
+          numberButtons: mNumberButtons
+        };
+        break;
+    }
   }
 
   ngAfterViewInit(): void {
@@ -87,8 +114,8 @@ export class VisualDemoComponent implements AfterViewInit, OnDestroy, OnInit {
         const event =
           this.code.added.event ??
           (() => {
-            switch (this.code.added.label) {
-              case 'input':
+            switch (this.addedElements.get(i)?.nativeElement.localName) {
+              case 'label':
                 return 'input';
               case 'button':
               default:

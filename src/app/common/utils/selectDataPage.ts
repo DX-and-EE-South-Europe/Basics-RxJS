@@ -1,4 +1,4 @@
-import { anatomyPage } from '../const/anatomy-obs/anatomy';
+import { observablePage } from '../const/observables/observables';
 import { functionsPages } from '../const/functions/functions';
 import { multicastedPage } from '../const/multicasted-obs.ts/multicasted';
 import { operatorsPages } from '../const/operators/operators';
@@ -16,8 +16,8 @@ const selectFileDataPage = (path: string[]): boolean | DataPage[] => {
     case 'functions':
       objPage = functionsPages;
       break;
-    case 'anatomy-observables':
-      objPage = anatomyPage;
+    case 'observables':
+      objPage = observablePage;
       break;
     case 'multicasted-observables':
       objPage = multicastedPage;

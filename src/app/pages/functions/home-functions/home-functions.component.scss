@@ -1,0 +1,83 @@
+@use '/src/styles/var.scss' as v;
+
+.description {
+  font-size: 1.2rem;
+}
+.note {
+  margin: v.$spacer1-0 0;
+}
+
+dl {
+  div {
+    display: grid;
+    grid-template-areas:
+      'description .'
+      'list exampleCode';
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    .description-kind {
+      font-size: 1.3rem;
+      font-weight: 600;
+      grid-area: description;
+      margin-top: v.$spacer0-5;
+      text-decoration: underline;
+      &dt::after {
+        content: ':';
+      }
+    }
+    ul {
+      font-size: 1.1rem;
+      grid-area: list;
+      line-height: 1.4rem;
+      list-style-position: outside;
+      margin: 0 v.$spacer1-5;
+      &.list-level1 {
+        list-style: disc;
+        margin-top: v.$spacer0-5;
+      }
+      &.list-level2 {
+        list-style: circle;
+      }
+    }
+  }
+}
+.list-exampleCodes {
+  align-content: stretch;
+  align-items: stretch;
+  column-gap: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  row-gap: 5px;
+}
+.exampleCode {
+  border: 0.2rem solid v.$color-bg-light;
+  border-radius: 1rem;
+  display: flex;
+  font-family: 'Arial';
+  font-size: 1rem;
+  grid-area: exampleCode;
+  justify-content: center;
+  line-height: 1.1rem;
+  padding: v.$spacer1-0;
+  place-self: start stretch;
+  width: 100%;
+  pre {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1180px) {
+  dl {
+    div {
+      grid-template-areas:
+        'description'
+        'list'
+        'exampleCode';
+    }
+  }
+  .list-exampleCodes {
+    flex-wrap: wrap;
+  }
+}

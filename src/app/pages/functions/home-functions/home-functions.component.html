@@ -1,1 +1,23 @@
-<p>home-functions works!</p>
+<h1>{{ functionsInfo.title }}</h1>
+<p class="description">{{ functionsInfo.description.intro }}</p>
+<dl>
+  <div>
+    <ul class="list-level1">
+      <li *ngFor="let text of functionsInfo.description.list">{{ text }}</li>
+      <ul class="list-level2">
+        <li *ngFor="let example of functionsInfo.description.examples">{{ example }}</li>
+      </ul>
+    </ul>
+    <code class="exampleCode">
+      <pre appHighlight class="language-javascript">{{ functionsInfo.description.codeExample }}</pre>
+    </code>
+  </div>
+</dl>
+<div>
+  <p class="note">{{ functionsInfo.note }}</p>
+  <div class="list-exampleCodes">
+    <code class="exampleCode list" *ngFor="let noteExample of functionsInfo.noteExamples">
+      <pre appHighlight class="language-javascript">{{ noteExample }}</pre>
+    </code>
+  </div>
+</div>

@@ -113,7 +113,7 @@ input$
         ajax.getJSON('http://localhost:3000/posts/\${val}'))
     )
     .subscribe(console.log)`,
-      added: { label: 'input', number: 1, names: ['id'] },
+      added: { label: 'input', numberInputs: 1, namesInputs: ['id'] },
       needJsonServer: true
     },
     /* {
@@ -175,7 +175,7 @@ input$
         ajax.getJSON('http://localhost:3000/posts/\${val}'))
     )
     .subscribe(console.log)`,
-      added: { label: 'input', number: 3, names: ['id', 'author', 'title'] },
+      added: { label: 'input', numberInputs: 3, namesInputs: ['id', 'author', 'title'] },
       needJsonServer: true
     },
     {
@@ -191,7 +191,7 @@ input$
         ajax.getJSON('http://localhost:3000/posts/\${val}'))
     )
     .subscribe(console.log)`,
-      added: { label: 'none', number: 0 },
+      added: { label: 'none' },
       needJsonServer: true
     }
   ]

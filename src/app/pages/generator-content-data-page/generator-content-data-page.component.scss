@@ -7,9 +7,9 @@
 }
 
 section {
-  margin: v.$spacer0-5 0;
+  margin: v.$spacer0-5 0 v.$spacer1-0;
 
-  &.section-concept {
+  &.section-concept.add-grid {
     display: grid;
     grid-gap: v.$spacer1-0;
     grid-row: 2;
@@ -20,7 +20,15 @@ section {
       grid-column: 1;
       grid-row: 1;
       margin-right: v.$spacer1-0;
-      white-space: wrap;
+      white-space: pre-wrap;
+      .concept-definition-note {
+        //font-style: italic;
+        margin-top: v.$spacer1-5;
+        &::before {
+          content: 'Note: ';
+          font-weight: 600;
+        }
+      }
     }
 
     img {

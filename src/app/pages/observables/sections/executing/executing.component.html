@@ -1,0 +1,45 @@
+<p>The code inside the Observable represent the Obervable execution.</p>
+<p>As you see in 'creating observable' section, an observable emits three different type of values:</p>
+<ul class="list">
+  <li>Next: When calling the 'next' method, it emits some value like a string, number, array, object...</li>
+  <li>Error: When an Error happens inside an observable, it emmits the error or exception.</li>
+  <li>Complete: When the 'complete' method is called inside the observable. (It does not emit any value).</li>
+</ul>
+<p>
+  'Next' is the most common and important type of value emitted by an observable. 'Error' and 'Complete' only happen
+  once and they are like a trigger that stops the execution of the observable.
+</p>
+<p>To manage the values emitted by the observable, we can pass arguments to the subscribe method:</p>
+<ul class="list">
+  <li>1 Callback: It executes only the values emitted by the 'next' method.</li>
+  <div class="center">
+    <code class="exampleCode">
+      <pre appHighlight class="language-javascript">{{ executing.exampleCallback }}</pre>
+    </code>
+  </div>
+  <li>
+    2 Callback:The first callback it executed only the values emitted by the 'next' method, and the second when an error
+    is caught.
+  </li>
+  <div class="center">
+    <code class="exampleCode">
+      <pre appHighlight class="language-javascript">{{ executing.example2Callback }}</pre>
+    </code>
+  </div>
+  <li>3 Callback: The first is for the 'next' method, the second for the 'error', and the third for the 'complete'.</li>
+  <div class="center">
+    <code class="exampleCode">
+      <pre appHighlight class="language-javascript">{{ executing.example3Callback }}</pre>
+    </code>
+  </div>
+  <li>
+    Observer (Best choice): A collection of callbacks that listen the differents types of values emmited by the
+    observables.
+  </li>
+  <div class="center">
+    <code class="exampleCode">
+      <pre appHighlight class="language-javascript">{{ executing.exampleObserver }}</pre>
+    </code>
+  </div>
+</ul>
+<p class="last-content">This app use a custom observer for the demos examples.</p>

@@ -100,7 +100,7 @@ h3 {
   }
 }
 
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 985px) {
   h3 {
     justify-content: center;
   }
@@ -117,16 +117,6 @@ h3 {
       align-self: center;
       justify-content: center;
       margin-bottom: 0;
-      .secondary-button {
-        background-color: white;
-        border: 0.2rem solid v.$color-bg-light;
-      }
-      .secondary-input {
-        justify-content: center;
-        span {
-          display: block;
-        }
-      }
     }
 
     &.added {

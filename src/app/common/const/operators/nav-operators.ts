@@ -6,7 +6,7 @@ export const navOperators: ComplexNav = {
   labels: [
     {
       name: 'Creation',
-      labels: ['of', 'from' /*'fromEvent', 'interval', 'range', 'timer' */],
+      labels: ['of', 'from', 'fromEvent', 'interval'],
       isSimple: true
     },
     {
@@ -20,7 +20,6 @@ export const navOperators: ComplexNav = {
             'map',
             'filter',
             'tap',
-            /* 'reduce',*/
             'scan',
             'take',
             'takeWhile',
@@ -36,17 +35,12 @@ export const navOperators: ComplexNav = {
         {
           name: 'High-Order Observables',
           isSimple: true,
-          labels: [/* 'mergeAll', */ 'concatMap', 'mergeMap', 'switchMap', 'exhaustMap']
+          labels: ['concatMap', 'mergeMap', 'switchMap', 'exhaustMap']
         },
         {
           name: 'Error Handling',
           isSimple: true,
           labels: ['catchError', 'retry']
-        },
-        {
-          name: 'Multicasting',
-          isSimple: true,
-          labels: ['shareReplay']
         }
       ]
     }
